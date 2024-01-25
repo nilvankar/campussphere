@@ -27,7 +27,7 @@ export default function Login() {
   
     try {
       const response = await fetch(
-        "https://blcdjd0s-5000.inc1.devtunnels.ms/login",
+        "http://localhost:3000/login",
         {
           method: "POST",
           headers: {
@@ -74,7 +74,7 @@ export default function Login() {
         </div>
         <div className="form-container">
           <form
-            action="https://blcdjd0s-5000.inc1.devtunnels.ms/login"
+            action="http://localhost:3000/login"
             method="POST"
             onSubmit={handleSubmit}
             className="flex justify-center items-center flex-col object-cover h-full w-full "

@@ -107,7 +107,7 @@ export default function SignUp() {
     try {
       const storedToken = localStorage.getItem("authToken");
       const response = await fetch(
-        "https://blcdjd0s-5000.inc1.devtunnels.ms/create-user",
+        "http://localhost:3000/create-user",
         {
           method: "POST",
           headers: {
@@ -149,7 +149,7 @@ export default function SignUp() {
 */}
         <div className="form-container" style={{ height: "200vh" }}>
           <form
-            action="https://blcdjd0s-5000.inc1.devtunnels.ms/create-user"
+            action="http://localhost:3000/create-user"
             method="POST"
             className="stuForm"
             onSubmit={handleSubmit}

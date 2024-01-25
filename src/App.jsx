@@ -9,54 +9,25 @@ import Login from "./component/pages/Login.jsx";
 import Contact from "./component/pages/Contact.jsx";
 import Products from "./component/pages/Products.jsx";
 export default function App() {
-  const [authToken, setAuthToken] = useState(null);
-  const navigate=useNavigate();
-  useEffect(() => {
-    // Check if authentication token is present in localStorage
-    var storedToken = localStorage.getItem('authToken');
-    if (storedToken) {
-      setAuthToken(storedToken);
-    }
-  }, []);
-
-  const handleLogin = (token) => {
-    // Save token to localStorage and state
-    localStorage.setItem('authToken', token);
-    setAuthToken(token);
-  };
-
-  const handleLogout = () => {
-    // Remove token from localStorage and state
-    localStorage.removeItem('authToken');
-    setAuthToken(null);
-  };
-
+ 
   return (
     <>
       <Routes>
-      <Route
-      path="/login"
-      element={authToken ? navigate("/") : <Login onLogin={handleLogin} />}
-    />
+      <Route exact path="/" element={<Home />}/>
         <Route exact path="/about" element={<About />}>
-          About Us
+         
         </Route>
-        <Route exact path="/products" element={<Products />}>
-          Products
-        </Route>
-        <Route exact path="/signup" element={<SignUp />}>
-          SignUp
-        </Route>
-        <Route exact path="/contact" element={<Contact />}>
-          Contact Us
-        </Route>
-        <Route exact path="/blogs" element={<Blogs />}>
-          Blogs
-        </Route>
-        <Route
-          path="/"
-          element={authToken ? <Home onLogout={handleLogout} /> :navigate("/login")}
-        />
+        <Route exact path="/products" element={<Products />} />
+         
+      
+          <Route exact path="/contact" element={<Contact />} />
+        
+          
+          <Route exact path="/blogs" element={<Blogs />} />
+        
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<SignUp />} />
+           
       </Routes>
     </>
   );
