@@ -1,0 +1,109 @@
+.main {
+  height: 165vh;
+  width: 100vw;
+  background-color: rgba(53, 53, 169, 0.959);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  height: 90vh;
+  width: 95vw;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  /* Change to row to align the img-container and form-container side by side */
+}
+
+.img-container {
+  height: 100%;
+  width: 50%;
+}
+
+.log-img {
+  object-fit: cover;
+  height: 100%;
+  /* Set the image height to 100% of its container */
+  width: 100%;
+  /* Set the image width to 100% of its container */
+}
+
+/* Add this to your existing CSS file or create a new one */
+.form-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Center vertically */
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  object-fit: contain;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 30vw;
+  background-color: white;
+  margin-top: 4px;
+  padding: 8px;
+  border-width: 1px;
+  width: 30vw;
+  border-radius: 6px;
+}
+
+.form-input:invalid {
+  color: red;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.submit-btn {
+  background-color: rgb(23, 23, 146);
+  padding: 10px 20px;
+  /* Adjust padding as needed */
+  cursor: pointer;
+  display: inline;
+}
+
+.submit-btn:hover {
+  background-color: rgb(65, 65, 254);
+}
+
+.form-control {
+  display: inline-block;
+}
+
+.form-btn {
+  width: 14vw;
+  border: 2px solid;
+  background-color: white;
+  color: black;
+  margin-top: 4px;
+  padding: 8px;
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+.form-btn:hover {
+  width: 14vw;
+  border: 2px solid;
+  background-color: rgba(33, 33, 209, 0.941);
+  color: white;
+}

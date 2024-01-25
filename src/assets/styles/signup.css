@@ -1,0 +1,96 @@
+/* .main {
+ 
+  width: 100vw;
+  background-color: rgba(53, 53, 169, 0.959);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border: 2px solid green;
+  
+  width: 95vw;
+  justify-content: space-evenly;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+ 
+} */
+
+.img-container {
+  height: 100%;
+  width: 50%;
+}
+
+.log-img {
+  object-fit: fill;
+  height: 100%;
+  /* Set the image height to 100% of its container */
+  width: 100%;
+  /* Set the image width to 100% of its container */
+}
+
+/* .form-container {
+  width: 47vw;
+ 
+} */
+
+.stuForm {
+  border: 2px solid tomato;
+  display: flex;
+  height: 160vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form-div {
+  width: 30vw;
+  background-color: white;
+  margin-top: 4px;
+  padding: 8px;
+  border-width: 1px;
+  width: 30vw;
+  border-radius: 6px;
+}
+.form-input {
+  width: 30vw;
+  background-color: white;
+  margin-top: 4px;
+  padding: 8px;
+  border-width: 1px;
+  width: 35vw;
+  border-radius: 6px;
+}
+
+
+/* In your CSS file or as inline styles */
+.signup {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* This ensures the entire height of the viewport is covered */
+}
+
+.main {
+  flex-grow: 1; /* This will make the main content area take up the remaining space */
+  overflow-y: auto; /* If the content exceeds the height, it will become scrollable */
+}
+
+/* .card {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.form-container {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Add other necessary styling based on your design */
+
+/* Example for header and footer */
+/* Add your header and footer styling here */
+
+.form-div button{
+  margin: 0px 2px;
+}
