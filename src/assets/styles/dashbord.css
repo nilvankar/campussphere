@@ -1,11 +1,4 @@
-body {
-  background-color: rgb(194, 30, 30);
-  color: white;
-}
-.dash-parent{
-  height: 471vh;
-  width: 100vw;
-}
+
 main {
   width: 80%;
   margin: 3rem auto;

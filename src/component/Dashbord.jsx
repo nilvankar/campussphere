@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import '../assets/styles/dashbord.css'
-
+import Header from './layout/Header'
+import Footer  from "./layout/Footer";
 export default function Dashboard() {
  
   return (
-    <div className="dash-parent">
-    <div className="head">
+    <>
+   
     <Header />
-    </div>
-      <main
-        className={`flex justify-between m-0 `}
-      >
+      <div className="dashbord bg-blue-300/100">
+      
+      <main className={`flex justify-between m-0 `} >
         <div
           id="sidebar-container"
           className="flex flex-col justify-between py-5 px-4 h-screen w-2/5 bg-cyan-950/10"
@@ -51,9 +51,9 @@ export default function Dashboard() {
           </div>
         </div>
       </main>
-      <div className="foot">
-      <Footer />
       </div>
-    </div>
+     <Footer />
+     
+    </>
   );
 }

@@ -8,7 +8,7 @@
 }
 
 .card {
-  height: 90vh;
+  height: 130vh;
   width: 95vw;
   background-color: white;
   display: flex;
@@ -41,8 +41,8 @@
 }
 
 .form {
-  width: 100%;
-  height: 100%;
+  width: 89%;
+  height: 73%;
 
   display: flex;
   object-fit: contain;

@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
-    <div className="footer w-full border-2 border-red-400 inline-block bg-gray-400/100" style={{ height: "34%" }}>
+    <div className="footer w-full border-2 border-red-400 inline-block bg-gray-400/100" style={{ height: "37%" }}>
       <div className="papa flex justify-between mx-4 my-1">
         <div className="footer-logo  h-56 w-40">
           <img
@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="container">
           <nav className="child-container">
             <ul>
-              <li className="inline-block px-14 py-5">
+              <li className="inline-block px-14 py-5 " style={{width:"20vw"}}>
                 <u> Quick Links</u>
                 <div className="sub-link">
                   <nav>
@@ -38,7 +38,7 @@ export default function Footer() {
                   </nav>
                 </div>
               </li>
-              <li className="inline-block px-14 py-5">
+              <li className="inline-block px-14 py-5" style={{width:"20vw"}} >
                 <u>Top Courses</u>
                 <div className="sub-link">
                   <nav>
@@ -73,7 +73,7 @@ export default function Footer() {
                   </nav>
                 </div>
               </li>
-              <li className="inline-block px-14 py-5">
+              <li className="inline-block px-14 py-5" style={{width:"23vw"}} >
                 <u>About Baker</u>
                 <div className="sub-link">
                   <nav>

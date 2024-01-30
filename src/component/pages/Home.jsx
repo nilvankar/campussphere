@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <div className="home" style={{ height: "140vh", width: "100vw" }}>
       <Header />
-      <div className="main "></div>
+      <div className="main ">
+      <h1>Home</h1>
+      </div>
       <Footer />
     </div>
   );
