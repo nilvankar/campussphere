@@ -1,0 +1,113 @@
+form {
+  max-width: 25rem;
+  margin: 2rem auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: white;
+  background-color: black;
+  border: 1px solid rgb(204, 204, 204);
+}
+
+input:focus,
+textarea:focus {
+  color: black;
+  background-color: grey;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+}
+
+.form-control {
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.multi-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-update {
+  padding: 0.2rem;
+  background-color: white;
+  color: black;
+}
+
+#status {
+  display: flex;
+  align-items: center;
+  /* margin: 0 1rem; */
+}
+
+#status label {
+  margin: 0 1rem 0 0;
+}
+
+#file-label {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem;
+}
+
+#remove-file {
+  border: 0px solid white;
+  font-weight: bold;
+  padding: 0.25rem;
+}
+
+.file-update:hover {
+  color: aqua;
+  background-color: rgb(11, 152, 218);
+}
+
+.social-login {
+  margin: 2rem 0;
+}
+
+
+.social-login div {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+}
+
+.social-login i {
+  height: 100%;
+  padding: 0.7rem 0.5rem;
+  color: white;
+  background-color: rgb(19, 18, 18);
+}
+
+.social-login span {
+  margin: 10px;
+}
+
+#file-name {
+  padding: 0 1rem;
+  text-decoration: underline;
+  color: lightblue;
+}
+
+#file-picker {
+  display: none;
+}

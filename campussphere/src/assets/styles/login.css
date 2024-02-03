@@ -1,10 +1,10 @@
 .main {
-  height: 165vh;
+  /* height: 165vh; */
   width: 100vw;
   background-color: rgba(53, 53, 169, 0.959);
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .card {
@@ -84,10 +84,6 @@ label {
 
 .submit-btn:hover {
   background-color: rgb(65, 65, 254);
-}
-
-.form-control {
-  display: inline-block;
 }
 
 .form-btn {
