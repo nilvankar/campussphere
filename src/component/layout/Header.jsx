@@ -1,70 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-export default function Header() {
-  return (
-    <div className=" w-screen h-1/6 sm:h-40w-screen">
-      <div className="navbar-img" style={{ paddingBottom: "2px" }}>
-        <nav
-          className="relative flex items-center "
-          style={{ height: "22vh", width: "100vw" }}
-        >
-          <Link to={"/"} className="p-8">
-            <img
-              src={logo}
-              alt="Logo of Campus Sphere"
-              style={{ width: "12vw", height: "18vh" }}
-              className="object-cover "
-            />
-          </Link>
+import React from 'react'
+import LogoImg from '../../assets/images/logo.png'
+const Header = () => {
 
-          <div
-            className="navbar"
-            style={{ display: "flex", justifyContent: "space-evenly" }}
-          >
-            <ul>
-              <li className="inline">
-                <Link className="p-8" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="inline">
-                <Link className="p-8" to="/about">
-                  About Us
-                </Link>
-              </li>
-              <li className="inline">
-                <Link className="p-8" to="/products">
-                  Products
-                </Link>
-              </li>
-              <li className="inline">
-                <Link className="p-8" to="/signup">
-                  SignUp
-                </Link>
-              </li>
-              <li className="inline">
-                <Link className="p-8" to="/contact">
-                  Contact Us
-                </Link>
-              </li>
-              <li className="inline">
-                <Link className="p-8" to="/blogs">
-                  Blogs
-                </Link>
-              </li>
-              <li className="inline">
-                <Link className="p-8" to="/login">
-                  Login
-                </Link>
-              </li>
-              <li>
-              <Link to={'/dashbord'} className="p-8 " >Dashbord</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+ const handleToDos=(e)=>{
+  e.preventDefault();
+  navigate('/todos')
+ }
+  return (
+    <div className='header w-screen h-36 bg-slate-300/100 '>
+    <div className='log'><img src={LogoImg} style={{height:'89px',width:'89px',borderRadius:'55px',marginLeft:'99px' }} alt="" /></div>
+    <button className='todos inline-block' onClick={handleToDos}>todos</button>
+  
     </div>
-  );
+  )
 }
+
+export default Header

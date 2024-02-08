@@ -15,14 +15,15 @@ export default function Contact() {
         className="contact border-8 border-cyan-400 bg-blue-500/100 flex flex-col items-center"
         style={{ height: "200vh", width: "100vw" }}
       >
+        
         <img src={contactImg} alt="" />
         <h1 className="text-3xl font-semibold mb-6 text-white">CONTACT US</h1>
         <form
-          className="contact-form flex flex-col items-center"
+          className="contact-form flex flex-col items-center bg-green-300/100"
           style={{ border: "2px solid green", width: "41vw" }}
         >
           <div className="mb-4">
-            <label htmlFor="email" className=" mb-1 text-white">
+            <label htmlFor="email" className=" mb-1 text-white"  required>
               EMAIL
             </label>
             <input
@@ -34,7 +35,7 @@ export default function Contact() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className=" mb-1 text-white">
+            <label htmlFor="password" className=" mb-1 text-white" required >
               Password
             </label>
             <input

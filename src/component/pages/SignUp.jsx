@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import signupImg from '../../assets/images/social_img.jpg'
+import signupImg from "../../assets/images/social_img.jpg";
 import "../../assets/styles/signup.css";
 import { useNavigate } from "react-router-dom";
 import Footer from "../layout/Footer";
@@ -64,6 +64,7 @@ export default function SignUp() {
     }
 
     setFormData({ ...formData, [name]: value });
+    console.log('running');
   };
   const {
     firstName,
@@ -106,17 +107,14 @@ export default function SignUp() {
 
     try {
       const storedToken = localStorage.getItem("authToken");
-      const response = await fetch(
-        "http://localhost:3000/create-user",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Access-token": storedToken,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("http://localhost:3000/create-user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Access-token": storedToken,
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         const userData = await response.json();
@@ -141,21 +139,23 @@ export default function SignUp() {
   return (
     <>
       <Header />
-      <div className="main" style={{ height: "242vh", backgroundImage:`url(${signupImg})` }}>
-        {/*    <div className="img-container">
-        <img src={contactImg} alt="Login Image" className="log-img" />
-      </div>
-    
-*/}
-        <div className="form-container" style={{ height: "200vh" }}>
+      <div
+        className="main w-screen bg-slate-100/100"
+        style={{ height: "289vh",width:'100vw' }}
+      >
+        <div
+          className="form-container bg-teal-400/100 border-2 border-black"
+          style={{ height: "291vh" }}
+        >
           <form
             action="http://localhost:3000/create-user"
             method="POST"
-            className="stuForm"
+            className="stuForm border-2 border-black"
             onSubmit={handleSubmit}
+            style={{ height: "286vh", width: "41vw" }}
           >
             <h1 className="text-center font-extrabold text-white">Sign Up</h1>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="email"
                 className="block text-gray-700 text-sm font-medium"
@@ -172,7 +172,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="password"
                 className="block text-gray-700 text-sm font-medium"
@@ -189,7 +189,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="firstName"
                 className="block text-gray-700 text-sm font-medium"
@@ -206,7 +206,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="lastName"
                 className="block text-gray-700 text-sm font-medium"
@@ -223,7 +223,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label htmlFor="dob">Date Of Birth</label>
               <input
                 className="form-input"
@@ -234,7 +234,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="fatherName"
                 className="block text-gray-700 text-sm font-medium"
@@ -251,7 +251,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="colonyName"
                 className="block text-gray-700 text-sm font-medium"
@@ -268,7 +268,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="landmark"
                 className="block text-gray-700 text-sm font-medium"
@@ -285,7 +285,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="area"
                 className="block text-gray-700 text-sm font-medium"
@@ -302,7 +302,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="city"
                 className="block text-gray-700 text-sm font-medium"
@@ -320,7 +320,7 @@ export default function SignUp() {
               />
             </div>
 
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="pincode"
                 className="block text-gray-700 text-sm font-medium"
@@ -337,35 +337,21 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div
-              className="form-div "
-              style={{
-                width: "42vw",
-                height: "11vh",
-                marginTop: "9px",
-                fontWeight: "bold",
-              }}
-            >
+            <div className="form-div" style={{ width: "37vw" }}>
               <label htmlFor="gender">Gender</label>
-              <select
-                name="gender"
-                id="gender"
-                required
-                className="block text-gray-700 text-sm font-medium"
-                onChange={handleChange}
-              >
-                <option hidden> Select Gender</option>
-
-                <option value="male" onChange={handleChange}>
-                  Male
-                </option>
-                <option value="female" onChange={handleChange}>
-                  Female
-                </option>
-              </select>
+              <label htmlFor="male">
+                Male
+                <input type="radio" name="gender" id="male" />
+                <span className="checkmark" id="male"></span>
+              </label>
+              <label htmlFor="female">
+                Female
+                <input type="radio" name="gender" id="female" />
+                <span className="checkmark" id="female"></span>
+              </label>
             </div>
 
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="primaryNo"
                 className="block text-gray-700 text-sm font-medium"
@@ -382,7 +368,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <label
                 htmlFor="alternativeNo"
                 className="block text-gray-700 text-sm font-medium"
@@ -398,30 +384,24 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
-              <select
-                name="desg"
-                id="desg"
-                required
-                className="block text-gray-700 text-sm font-medium"
-                onChange={handleChange}
-              >
-                <option hidden>Select Designation</option>
-                <option value="admin" onChange={handleChange}>
-                  Administrator
-                </option>
-                <option value="student" onChange={handleChange}>
-                  Student
-                </option>
-                <option value="hod" onChange={handleChange}>
-                  Head Of Department
-                </option>
-                <option value="faculty" onChange={handleChange}>
-                  Faculty
-                </option>
-              </select>
+            <div className="form-div " style={{ width: "37vw" }}>
+              <label htmlFor="desg">
+                Select Designation
+                <label htmlFor="student">Student</label>
+                <input type="radio" id="student" name="desg" />
+                <span className="checkmark" id="student"></span>
+                <label htmlFor="admin">Administrator</label>
+                <input type="radio" id="admin" name="desg" />
+                <span className="checkmark" id="admin"></span>
+                <label htmlFor="faulty">Faculty</label>
+                <input type="radio" id="faculty" name="desg" />
+                <span className="checkmark" id="faculty"></span>
+                <label htmlFor="hod">Head Of Department</label>
+                <input type="radio" id="hod" name="desg" />
+                <span className="checkmark" id="hod"></span>
+              </label>
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <select
                 name="batch"
                 id="batchsel"
@@ -457,26 +437,24 @@ export default function SignUp() {
                 </option>
               </select>
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
-              <select name="dept" id="dept">
-                <option value="dept" hidden onChange={handleChange}>
-                  Select Department
-                </option>
-                <option value="computerScience" onChange={handleChange}>
-                  CSE
-                </option>
-                <option value="civil" onChange={handleChange}>
-                  Civil
-                </option>
-                <option value="mechanical" onChange={handleChange}>
-                  Mechanical
-                </option>
-                <option value="mechatronics" onChange={handleChange}>
-                  Mechatronics
-                </option>
-              </select>
+            <div className="form-div " style={{ width: "37vw" }}>
+              <label htmlFor="dept">
+                Select Department
+                <label htmlFor="cse">CSE</label>
+                <input type="radio" name="dept" id="cse" />
+                <span className="checkmark" id="cse"></span>
+                <label htmlFor="mechatronics">Mechatronics</label>
+                <input type="radio" name="dept" id="mechatronics" />
+                <span className="checkmark" id="mechatronics"></span>
+                <label htmlFor="mechanical">Mechanical</label>
+                <input type="radio" name="dept" id="mechanical" />
+                <span className="checkmark" id="mechanical"></span>
+                <label htmlFor="civil">Civil</label>
+                <input type="radio" name="dept" id="civil" />
+                <span className="checkmark" id="civil"></span>
+              </label>
             </div>
-            <div className="form-div " style={{ width: "42vw" }}>
+            <div className="form-div " style={{ width: "37vw" }}>
               <input
                 className="form-input bg-sky-300/95 hover:bg-sky-600/100 text-white"
                 style={{ width: "20vw", marginLeft: "95px" }}
@@ -485,6 +463,9 @@ export default function SignUp() {
               />
             </div>
           </form>
+        </div>
+        <div className="w-96 h-96" style={{backgroundImage: `url(${signupImg})` }}>
+        
         </div>
       </div>
 

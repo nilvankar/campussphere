@@ -8,7 +8,6 @@ import Footer from "../layout/Footer";
 
 // Firebase login system
 import SignInWithGoogle from "../../firebase/SignInWithGoogle";
-import SignInWithFaceBook from "../../firebase/SignInWithFaceBook";
 export default function Login() {
   const navigate = useNavigate();
   const initialState = {
@@ -123,7 +122,6 @@ export default function Login() {
             </form>
             <div className="sign-creadential bg-white border-2 w-72 border-black flex flex-col justify-center">
           <SignInWithGoogle />
-          <SignInWithFaceBook />
           </div>
           </div>
           

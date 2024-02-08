@@ -47,11 +47,10 @@
 .form-div {
   width: 30vw;
   background-color: white;
-  margin-top: 4px;
+
   padding: 8px;
-  border-width: 1px;
+
   width: 30vw;
-  border-radius: 6px;
 }
 .form-input {
   width: 30vw;

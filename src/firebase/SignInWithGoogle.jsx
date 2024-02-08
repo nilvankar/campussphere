@@ -15,6 +15,6 @@ export default function SignInWithGoogle() {
         }
     }
   return (
-    <button onClick={SignWithGoogle}><img src={googleImg} alt="" style={{height:"30px",width:"124px"}} className='mx-20' /></button>
+    <button onClick={SignWithGoogle} className='bg-green-300 hover:bg-green-300/100'><img src={googleImg} alt="" style={{height:"30px",width:"124px"}} className='mx-20 ' /></button>
   )
 }
