@@ -131,3 +131,79 @@ export const modules:modulesType[] = [
       alt: "Annual Checks",
     },
   ];
+  export const sideNavItems=[
+    {
+      href: "/home",
+   
+      alt: "Home",
+    },
+    {
+      href: "/college_setup",
+   
+      alt: "Collge setup",
+    },
+    {
+      href: "/academic_setup",
+    
+      alt: "Academics Setup",
+    },
+    {
+      href: "/college_master",
+      
+      alt: "Collge Master",
+    },
+    {
+      href: "/admin_module",
+
+      alt: "Admin",
+    },
+    {
+      href: "/user_managment",
+     
+      alt: "User Managment",
+    },
+   
+    { href: "/hr",  alt: "HR" },
+    {
+      href: "/accounts",
+    
+      alt: "Accounts",
+    },
+    {
+      href: "/college_operations",
+      
+      alt: "Collge Operations",
+    },
+    {
+      href: "/academics_module",
+     
+      alt: "Academics",
+    },
+    {
+      href: "/library_module",
+     
+      alt: "Library",
+    },
+    {
+      href: "/transporation",
+    
+      alt: "Transportation",
+    },
+    {
+      href: "/academic_history",
+      
+      alt: "Academic History",
+    },
+    {
+      href: "/domitory",
+      
+      alt: "Domitory",
+    },
+    {
+      href: "/lead_mgmt_module",
+     
+      alt: "Lead Managment",
+    },
+    { href: "/reports", alt: "Reports" },
+
+  ]

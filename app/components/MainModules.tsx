@@ -1,28 +1,35 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import {modules} from '@/app/data'
+import React from 'react';
+import Sidebar from '@/app/components/Sidebar';
+import { modules } from '@/app/data';
+import Link from 'next/link';
+import Image from 'next/image';
 
-const Sidebar =React.lazy(()=>import('@/app/components/Sidebar'));
 const MainModules = () => {
- 
   return (
-    <div className="w-screen overflow-y-scroll grid grid-cols-2" style={{gridTemplateColumns:"6rem 90rem"}} >
-     <div className="border-2 h-full"><Sidebar /></div>
-      <div className="w-full grid grid-cols-3">
+    <div className='w-screen overflow-y-scroll'>
+      <div className='grid grid-cols-2' style={{ gridTemplateColumns: '6rem 1fr' }}>
+        {/* Sidebar */}
+        <div className='border-2 h-full'>
+          <Sidebar />
+        </div>
 
-      {modules.map((module, i) => (
-        <Link className="text-black hover:brightness-90 brightness-100" style={{textDecoration:"none"}} key={i} href={module.href}>
-          <Image
-            height={module.height}
-            width={module.width}
-            src={module.imageSRC}
-            alt={module.alt}
-            className="rounded-full border-2"
-            />
-          <span>{module.alt}</span>
-        </Link>
-      ))}
+        {/* Main Module Grid */}
+        <div className='grid grid-cols-3 gap-4 p-4'>
+          {modules.map((module, i) => (
+            <Link className='text-black brightness-100 hover:brightness-90' style={{textDecoration:"none"}} href={module.href} key={i}>
+              <div className='flex flex-col items-center text-center'>
+                <Image
+                  src={module.imageSRC}
+                  alt={module.alt}
+                  width={100}
+                  height={100}
+                  className='rounded-full border-2'
+                />
+                <span className='mt-2 text-sm'>{module.alt}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

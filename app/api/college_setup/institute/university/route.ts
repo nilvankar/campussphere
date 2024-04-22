@@ -1,11 +1,13 @@
 import connectDb from "@/app/lib/database/db";
 import institute from "@/app/lib/models/institute";
 import { NextRequest, NextResponse } from "next/server";
-
+import {} from 'zod'
 connectDb();
 export const POST = async (req: NextRequest, res: NextResponse) => {
   if (req.method === "POST") {
+    
     try {
+      
       const reqBody = await req.json();
       const {
         address,

@@ -1,9 +1,12 @@
-import React from 'react'
+const ExcelData = React.lazy(() => import("@/app/components/ExcelData"));
+import React from "react";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div>
+      <ExcelData />
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
