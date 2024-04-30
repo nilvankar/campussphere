@@ -1,77 +1,107 @@
-import mongoose from 'mongoose'
-const user_Summary_schema = new mongoose.Schema({
-    branchName: { type: String, required: true },
-    DegreeCode: { type: String, required: true },
-    CourseYear: { type: String, required: true },
-    Section: { type: String, required: true },
-    Male: { type: Number, required: true },
-    Female: { type: Number, required: true },
-    transporations: { type: Number, required: true },
-    doms: { type: Number, required: true },
-    total_count: { type: Number, required: true },
-})
+import mongoose, { Document, Schema } from "mongoose";
+import {
+  domitorySummarySchemaType,
+  teachingPlanSummarySchemaType,
+  toppersSummarySchemaType,
+  userSummarySchemaType,
+  vehicalSummarySchemaType,
+  visitorSummarySchemaType,
+} from "../types/schema";
 
-const vehical_summary = new mongoose.Schema({
-    name: { type: String, required: true },
-    type: { type: String, required: true },
-    route_name: { type: String, required: true },
+const userSummarySchema: Schema<userSummarySchemaType> = new mongoose.Schema({
+  branchname: { type: String, required: true },
+  degreecode: { type: String, required: true },
+  courseyear: { type: String, required: true },
+  section: { type: String, required: true },
+  male_no: { type: Number, required: true },
+  female_no: { type: Number, required: true },
+  doms_no: { type: Number, required: true },
+  transportation: { type: Number, required: true },
+  total_count: { type: Number, required: true },
+});
+const visitorSummarySchema: Schema<visitorSummarySchemaType> =
+  new mongoose.Schema({
+    Sno: { type: Number, required: true },
+    userName: { type: String, required: true },
+    visitorName: { type: String, required: true },
+    courseyear: { type: String, required: true },
+    section: { type: String, required: true },
+    date: { type: String, required: true },
+    mobileNo: { type: Number, required: true },
+    meetingPurpose: { type: String, required: true },
+  });
+const toppersSummarySchema: Schema<toppersSummarySchemaType> =
+  new mongoose.Schema({
+    fullname: { type: String, required: true },
+    degreecode: { type: String, required: true },
+    courseyear: { type: String, required: true },
+    section: { type: String, required: true },
+    gender: { type: String, required: true },
+    percentage: { type: Number, required: true },
+    grade: { type: String, required: true },
+    CGPA: { type: String, required: true },
+    rank: { type: Number, required: true },
+  });
+const domitorySummarySchema: Schema<domitorySummarySchemaType> =
+  new mongoose.Schema({
+    buldingName: { type: String, required: true },
+    domType: { type: String, required: true },
+    userId: { type: String, required: true },
+    userName: { type: String, required: true },
+    branchname: { type: String, required: true },
+    degreecode: { type: String, required: true },
+    courseyear: { type: String, required: true },
+    section: { type: String, required: true },
+    roomType: { type: String, required: true, enum: ["AC", "Non-AC"] },
+    floorNO: { type: Number, required: true },
+    roomNo: { type: Number, required: true },
+    bedNo: { type: Number, required: true },
+  });
+const teachingPlanSummarySchema: Schema<teachingPlanSummarySchemaType> =
+  new mongoose.Schema({
+    subjectName: { type: String, required: true },
+    lessNo: { type: Number, required: true },
+    noPeriods: { type: Number, required: true },
+    lessonName: { type: String, required: true },
+    from_Date: { type: String, required: true },
+    status: { type: String, required: true },
+    completionDate: { type: String, required: true },
+    to_date: { type: String, required: true },
+    lessonplan: { type: String, required: true },
+  });
+const vehicalSummarySchema: Schema<vehicalSummarySchemaType> =
+  new mongoose.Schema({
+    vehicalName: { type: String, required: true },
+    vehicaltype: { type: String, required: true },
+    vehicalroute: { type: String, required: true },
     max_capacity: { type: Number, required: true },
     allocated_capacity: { type: Number, required: true },
     staff_count: { type: Number, required: true },
     student_count: { type: Number, required: true },
     available_seats: { type: Number, required: true },
-})
+  });
 
-const domitory_summary = new mongoose.Schema({
-    bulding_name: { type: String, required: true },
-    type: { type: String, required: true, enum: ["Boys", "Girls"] },
-    userId: { type: Number, required: true },
-    userName: { type: String, required: true },
-    degreeCode: { type: String, required: true },
-    courseYear: { type: String, required: true },
-    section: { type: String, required: true },
-    floor_no: { type: Number, required: true },
-    rom_no: { type: Number, required: true },
-    bed_no: { type: Number, required: true },
-    room_type: { type: String, required: true, enum: ["AC", "Non-Ac"] },
-})
-const toppers_summary = new mongoose.Schema({
-    degreeCode: { type: String, required: true },
-    courseYear: { type: String, required: true },
-    section: { type: String, required: true },
-    name: { type: String, required: true },
-    gender: { type: String, required: true, enum: ["Male", "Enum"] },
-
-    percentage: { type: Number, required: true },
-    grade: { type: Number, required: true },
-    CGPA: { type: Number, required: true },
-    Rank: { type: Number, required: true },
-})
-const visitor_summary = new mongoose.Schema({
-    s_no: { type: Number, required: true },
-    courseYear: { type: String, required: true },
-    section: { type: String, required: true },
-    userName: { type: String, required: true },
-    visitor_name: { type: String, required: true },
-    dept: { type: String, required: true },
-    date: { type: String, required: true },
-    mobile_no: { type: Number, required: true },
-    meeting_purpose: { type: String, required: true },
-})
-
-const teaching_plan_summary = new mongoose.Schema({
-    subject: { type: String, required :true},
-    less_no: { type:Number, required :true},
-    less_name: { type: String, required :true},
-    lesson_plan: { type: String, required :true},
-    no_period: { type: Number, required :true},
-    from_date: { type: String, required :true},
-    to_date: { type: String, required :true},
-})
-
-export const user_summary=mongoose.model('user_summary',user_Summary_schema);
-export const vehical_summary_schema=mongoose.model('vehical_summary',vehical_summary);
-export const domitory_summary_schema=mongoose.model('domitory_schema',domitory_summary);
-export const toppers_summary_Schema=mongoose.model('toppers_summary',toppers_summary)
-export const visitor_summary_Schema=mongoose.model('visitor_summary',visitor_summary)
-export const teaching_plan_summary_schema=mongoose.model('teaching_plan_summary',teaching_plan_summary)
+export const userModel = mongoose.model<userSummarySchemaType>(
+  "user_summary",
+  userSummarySchema
+);
+export const vehicalModel = mongoose.model<vehicalSummarySchemaType>(
+  "vehical_summary",
+  vehicalSummarySchema
+);
+export const visitorModel = mongoose.model<visitorSummarySchemaType>(
+  "visitors_summary",
+  visitorSummarySchema
+);
+export const teachingplan = mongoose.model<teachingPlanSummarySchemaType>(
+  "teaching_plan_summary",
+  teachingPlanSummarySchema
+);
+export const toppersmodel = mongoose.model<toppersSummarySchemaType>(
+  "toppers_summary",
+  toppersSummarySchema
+);
+export const domitoryModel = mongoose.model<domitorySummarySchemaType>(
+  "domitory_summary",
+  domitorySummarySchema
+);

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 export const metadata: Metadata = {
   title: "Campussphere",
   description: "A unviersity ERP project ",
@@ -13,8 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+   
     <html lang="en">
-      <body >{children}</body>
+      
+      <body>{children}
+   
+      </body>
+   
     </html>
+   
   );
 }

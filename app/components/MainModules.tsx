@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '@/app/components/Sidebar';
+const Sidebar=React.lazy(()=>import('@/app/components/Sidebar')) ;
 import { modules } from '@/app/data';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,9 +7,9 @@ import Image from 'next/image';
 const MainModules = () => {
   return (
     <div className='w-screen overflow-y-scroll'>
-      <div className='grid grid-cols-2' style={{ gridTemplateColumns: '6rem 1fr' }}>
+      <div className='grid grid-cols-2' style={{ gridTemplateColumns: '8rem 1fr' }}>
         {/* Sidebar */}
-        <div className='border-2 h-full'>
+        <div className='border-2 h-full bg-gradient-to-r from-sky-500/95 to-sky-400/100 text-white'>
           <Sidebar />
         </div>
 

@@ -13,6 +13,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      backgroundColor:{
+        "blue_gradient":"bg-gradient-to-r from-sky-300/85 to-sky-400/100"
+      }
     },
   },
   plugins: [],
