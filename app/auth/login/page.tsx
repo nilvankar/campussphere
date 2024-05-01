@@ -23,12 +23,16 @@ const LoginPage = () => {
       const resData = await res.json();
       if (res.ok) {
         console.log("successfuly logged in");
+        setUser(resData)
+        console.log(resData);
+        
         localStorage.setItem("token", resData.token);
         console.log(localStorage.getItem("token"));
-        router.push("/");
+        router.push("/private");
       }
     } catch (error) {
       console.error(error);
+      router.push('/auth/login')
     }
   };
   return (

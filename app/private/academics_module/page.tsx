@@ -11,11 +11,14 @@ const AcademicsModule = () => {
      
   ]
   return (
-    <div className='grid grid-cols-2' style={{gridTemplateColumns:"12rem 12rem"}}>
+    <div className='flex justify-center flex-row items-center' style={{gridTemplateColumns:"12rem 12rem"}}>
     {academicModules.map((module,i)=>(
-      <Link className='text-black' style={{textDecoration:"none"}} key={i} href={module.href}><Image src={module.imageSRC} height={module.height} width={module.width} alt={module.alt} />
-      <span>{module.alt}</span>
+      <div className='brightness-90 hover:brightness-100 bg-sky-400 mx-10 mt-32'>
+
+      <Link className='text-white' style={{textDecoration:"none"}} key={i} href={module.href}><Image src={module.imageSRC} height={module.height} width={module.width} alt={module.alt} />
+      {module.alt}
       </Link>
+      </div>
     ))}
       </div>
   )

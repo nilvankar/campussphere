@@ -10,10 +10,12 @@ export interface instituteType extends Document {
   contactno: number;
   officeno: number;
   panNo: number;
+  logo: string;
   address: string;
 }
 const institute: Schema<instituteType> = new mongoose.Schema({
   email: { type: String, required: true },
+  logo: { type: String, required: true },
   alternateEmail: { type: String, required: true },
   instituteName: { type: String, required: false },
   founderName: { type: String, required: true },
@@ -25,8 +27,7 @@ const institute: Schema<instituteType> = new mongoose.Schema({
   address: { type: String, required: true },
 });
 
-const instituteCollection =mongoose.models.institute|| mongoose.model<instituteType>(
-  "institute",
-  institute
-);
-export default instituteCollection
+const instituteCollection =
+  mongoose.models.institute ||
+  mongoose.model<instituteType>("institute", institute);
+export default instituteCollection;

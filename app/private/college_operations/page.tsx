@@ -12,9 +12,12 @@ const CollgeOperations = () => {
       {href:"/private/college_operations/user_support",imageSRC:"/images/past_users.jpeg",alt:"User Support",height:200,width:200},  
       ]
   return (
-    <div>
+    <div className='flex justify-center items-center flex-row'>
         {collegeOperationsModules.map((submodules)=>(
-            <Link key={submodules.href} href={submodules.href}><Image src={submodules.imageSRC} alt={submodules.alt} height={submodules.height} width={submodules.width} /><span>{submodules.alt}</span></Link>
+          <div className='brightness-90 hover:brightness-100 mt-32 mx-10 bg-black'>
+
+            <Link className='decoration-transparent text-white' key={submodules.href} href={submodules.href}><Image src={submodules.imageSRC} alt={submodules.alt} height={submodules.height} width={submodules.width} />{submodules.alt}</Link>
+          </div>
         ))}
     </div>
   )

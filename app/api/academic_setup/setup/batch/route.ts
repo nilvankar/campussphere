@@ -1,4 +1,5 @@
-import { batchModel } from "@/app/lib/models/academics";
+
+import { batch } from "@/app/lib/models/academics";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
@@ -14,7 +15,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       managedDepartment,
     } = reqBody;
     try {
-      const res = await batchModel.create({
+      const res = await batch.create({
         academicDegree: academicDegree,
         degree: degree,
         degreeGroup: degreeGroup,

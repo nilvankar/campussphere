@@ -90,3 +90,58 @@ export interface studentType extends Document {
   nationality: string;
   address: string;
 }
+export interface batchType extends Document {
+  academicDegree: string;
+  degree: string;
+  degreeGroup: string;
+  medium: string;
+  frombatch: number;
+  tobatch: number;
+  managedDepartment: string;
+}
+export interface subjectType extends Document {
+  sno: number;
+  subjectName: string;
+  subjectCode: string;
+  electiveName: string;
+  subjectGroup: string;
+}
+export interface sectionType extends Document {
+  section: string;
+  degreeCode: string;
+  courseYear: string;
+  maxStrength: number;
+  primaryFaculty: string;
+  secondaryFaculty: String;
+}
+
+export interface branchType extends Document {
+  branchLogo: string;
+  branchName: string;
+  registrationNumber: number;
+  instituteName: string;
+  alias: string;
+  email: string;
+  alteranteEmail: string;
+  contactNo: string;
+  officeNo: string;
+  address: string;
+  yearOfEstablishment: string;
+}
+export interface qualificationAdminType extends Document {
+  qualification: string;
+  university: string;
+  instituteName: string;
+  yearOfPassing: string;
+  marksheet: string;
+}
+export interface yearOfExperience extends Document {
+  instituteName: string;
+  designation: string;
+  from_date: string;
+  to_date: string;
+  yearofExp: number;
+  startingSalary: number;
+  endingSalary: number;
+  attatchments: string;
+}

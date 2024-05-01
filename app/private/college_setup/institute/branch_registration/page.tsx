@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import { PlusCircleFilled } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
 
 const BranchRegistration = () => {
   const initialState = {
@@ -15,21 +16,46 @@ const BranchRegistration = () => {
     yearOfEstablishment: "",
   };
   const [branch, setBranch] = useState(initialState);
+  useEffect(()=>{
+
+  },[])
+    const getBranch=async()=>{
+      try {
+        const res=await fetch('/api/college_setup/institute/branch_registration')
+        const data=await res.json()
+        if(res.ok){
+          console.log(data);
+         setBranch(data) 
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    //  getBranch()
 
   return (
     <div className="h-screen w-screen">
-       <div>
-        <label htmlFor="branchName">Branch Name</label>
-        <select name="branchName" id="branchName">
-          <option value="" hidden>Select</option>
-
-        </select>
+      <div className="flex justify-around flex-row w-30 border-2 mx-24">
+        <div>
+          <label className="block" htmlFor="branchName">BranchName</label>
+          <select name="branchName" id="branchName">
+            <option value="" hidden>
+              Select
+            </option>
+          </select>
+        </div>
+        <div>
+          <label className="block" htmlFor="branchNo">BranchNo</label>
+          <select name="branchNo" id="branchNo">
+            <option value="" hidden>Select</option>
+          </select>
+        </div>
       </div>
-      <div><label htmlFor="branchNo">Branch No</label><select name="branchNo" id="branchNo"><option value="" hidden>Select</option></select></div>
+      <span className="mx-24 mt-12">Add Branch <PlusCircleFilled className="hover:text-white" /></span>
       <form
         action=""
         method="POST"
-        className="grid grid-cols-3"
+        className="grid grid-cols-3 mx-12 mt-12"
         style={{ gridTemplateColumns: "" }}
       >
         <div className="border-2">
@@ -46,7 +72,7 @@ const BranchRegistration = () => {
         <div className="border-2">
           <div>
             <label className="block text-base font-normal" htmlFor="branchName">
-              BRANCH NAME
+             <span className="text-red-500">*</span> BRANCH NAME
             </label>
             <input
               className="rounded-lg block w-80 border-2"
@@ -60,7 +86,7 @@ const BranchRegistration = () => {
               className="block text-base font-normal"
               htmlFor="registrationNumber"
             >
-              Registration No
+           <span className="text-red-500">*</span>   Registration No
             </label>
             <input
               className="rounded-lg block w-80 border-2"
@@ -74,9 +100,9 @@ const BranchRegistration = () => {
               className="block text-base font-normal"
               htmlFor="yearOfEstablishment"
             >
-              Year Of Establishment
+             <span className="text-red-500">*</span> Year Of Establishment
             </label>
-            <input
+            <input className="rounded-lg block w-80 border-2"
               type="date"
               name="yearOfEstablishment"
               id="yearOfEstablishment"
@@ -95,7 +121,7 @@ const BranchRegistration = () => {
           </div>
           <div>
             <label className="block text-base font-normal" htmlFor="email">
-              Email Address
+            <span className="text-red-500">*</span> Email Address
             </label>
             <input
               className="rounded-lg block w-80 border-2"
@@ -122,7 +148,7 @@ const BranchRegistration = () => {
         <div className="border-2">
           <div>
             <label className="block text-base font-normal" htmlFor="contactNo">
-              Contact No
+            <span className="text-red-500">*</span> Contact No
             </label>
             <input
               className="rounded-lg block w-80 border-2"
@@ -144,7 +170,7 @@ const BranchRegistration = () => {
           </div>
           <div>
             <label className="block text-base font-normal" htmlFor="address">
-              Address
+            <span className="text-red-500">*</span> Address
             </label>
             <input
               className="rounded-lg block w-80 border-2"
@@ -153,13 +179,20 @@ const BranchRegistration = () => {
               id="address"
             />
           </div>
+          <div>
+            <label className="block text-base font-normal" htmlFor="instituteName"><span className="text-red-500">*</span>InstituteName</label>
+            <input type="text" className="rounded-lg block w-80 border-2" name="instituteName" id="instituteName" />
+          </div>
         </div>
+        <div className="flex justify-center flex-row">
+
         <input
-          className="rounded-lg block w-80 border-2"
+          className="rounded-lg block w-80 border-2 bg-sky-400 hover:bg-white text-white"
           type="submit"
           value="EDIT"
-        />
-        <button onClick={() => setBranch(initialState)}>Clear</button>
+          />
+        <button onClick={() => setBranch(initialState)} className="rounded-lg block w-80 border-2 bg-red-600 hover:bg-white text-white">Clear</button>
+          </div>
       </form>
     </div>
   );

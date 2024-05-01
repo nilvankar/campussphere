@@ -1,23 +1,22 @@
 "use client";
-import React, {
-  DOMElement,
-  FormEvent,
-  FormEventHandler,
-  useState,
-} from "react";
+import { useRouter } from "next/navigation";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 const UniversityInformation = () => {
-  const [institute, setInstitute] = useState({
+  const router = useRouter();
+  const intialState = {
     email: "",
     alternateEmail: "",
     instituteName: "",
     founderName: "",
     affiliation: "",
+    logo: "",
     shortcode: "",
     contactno: "",
     officeno: "",
     panNo: "",
     address: "",
-  });
+  };
+  const [institute, setInstitute] = useState(intialState);
 
   const {
     affiliation,
@@ -26,6 +25,7 @@ const UniversityInformation = () => {
     email,
     founderName,
     instituteName,
+    logo,
     officeno,
     panNo,
     shortcode,
@@ -33,51 +33,63 @@ const UniversityInformation = () => {
   } = institute;
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     try {
-      const res = await fetch("", { method: "PUT" });
+      const res = await fetch("/api/college_setup/institute/university", {
+        method: "PUT",
+      });
+      const data = res.json();
+      if (res.ok) {
+        console.log("successfully update");
+        alert("all changes are reflected to univeristy");
+        router.push("/private/college_setup/institute/university");
+      }
     } catch (error) {
       console.error(`something went wrong ${error}`);
     }
   };
-  const handleLoadData = async (e: FormEvent) => {
-    try {
-      const res = await fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(institute),
-      });
-      const resData = await res.json();
-      setInstitute(resData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const onchange = (e:any) => {
-    e.preventDefault();
+
+  const onchange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setInstitute((prev) => ({ ...prev, [name]: value }));
   };
+
+  useEffect(() => {
+    const getUniveristy = async () => {
+      const response = await fetch("/api/college_setup/institute/university");
+      const resData = await response.json();
+      console.log(resData);
+    };
+    getUniveristy();
+  }, [institute]);
   return (
-    <div className="h-screen w-screen" onLoad={handleLoadData}>
+    <div className="h-screen w-screen overscroll-y-none ">
       <form
         method="PUT"
         onSubmit={handleSubmit}
-      className="h-screen"
+        className="grid grid-cols-3 "
         style={{ gridTemplateColumns: "" }}
       >
         <div className="border-2">
-          <div>
-            <label htmlFor="logo">
+          <div className="justify-center">
+            <label className="block" htmlFor="logo">
               University Logo<span className="text-red-500">*</span>
             </label>
-            <input onChange={onchange} type="file" name="logo" id="logo" />
+            <input
+              className="rounded-lg border-2 block"
+              onChange={onchange}
+              type="file"
+              name="logo"
+              value={logo}
+              id="logo"
+            />
           </div>
         </div>
         <div className="border-2">
-          <div>
-            <label htmlFor="instituteName">
+          <div className="justify-center">
+            <label className="block" htmlFor="instituteName">
               Institute Name<span className="text-red-500">*</span>
             </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="text"
               value={instituteName}
@@ -85,11 +97,12 @@ const UniversityInformation = () => {
               id="instituteName"
             />
           </div>
-          <div>
-            <label htmlFor="founderName">
+          <div className="justify-center">
+            <label className="block" htmlFor="founderName">
               Founder Name<span className="text-red-500">*</span>
             </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="text"
               value={founderName}
@@ -97,11 +110,12 @@ const UniversityInformation = () => {
               id="founderName"
             />
           </div>
-          <div>
-            <label htmlFor="affiliation">
+          <div className="justify-center">
+            <label className="block" htmlFor="affiliation">
               Affiliation<span className="text-red-500">*</span>
             </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="text"
               name="affiliation"
@@ -109,9 +123,12 @@ const UniversityInformation = () => {
               id="affiliation"
             />
           </div>
-          <div>
-            <label htmlFor="shortcode">Institute ShortCode</label>
+          <div className="justify-center">
+            <label className="block" htmlFor="shortcode">
+              Institute ShortCode
+            </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="number"
               name="shortcode"
@@ -119,11 +136,12 @@ const UniversityInformation = () => {
               value={shortcode}
             />
           </div>
-          <div>
-            <label htmlFor="email">
+          <div className="justify-center">
+            <label className="block" htmlFor="email">
               Email Address<span className="text-red-500">*</span>
             </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="email"
               name="email"
@@ -131,9 +149,12 @@ const UniversityInformation = () => {
               value={email}
             />
           </div>
-          <div>
-            <label htmlFor="alternateEmail">Alternate Email</label>
+          <div className="justify-center">
+            <label className="block" htmlFor="alternateEmail">
+              Alternate Email
+            </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="email"
               name="alternateEmail"
@@ -141,11 +162,12 @@ const UniversityInformation = () => {
               value={alternateEmail}
             />
           </div>
-          <div>
-            <label htmlFor="contactNo">
+          <div className="justify-center">
+            <label className="block" htmlFor="contactNo">
               Contact Number<span className="text-red-500">*</span>
             </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="tel"
               name="contactNo"
@@ -155,11 +177,12 @@ const UniversityInformation = () => {
           </div>
         </div>
         <div className="border-2">
-          <div>
-            <label htmlFor="officeNo">
+          <div className="justify-center">
+            <label className="block" htmlFor="officeNo">
               OFFICE NO<span className="text-red-500">*</span>
             </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="tel"
               name="officeNo"
@@ -167,9 +190,12 @@ const UniversityInformation = () => {
               value={officeno}
             />
           </div>
-          <div>
-            <label htmlFor="panNo">PAN NO</label>
+          <div className="justify-center">
+            <label className="block" htmlFor="panNo">
+              PAN NO
+            </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="number"
               name="panNo"
@@ -177,11 +203,12 @@ const UniversityInformation = () => {
               value={panNo}
             />
           </div>
-          <div>
-            <label htmlFor="address">
+          <div className="justify-center">
+            <label className="block" htmlFor="address">
               Address<span className="text-red-500">*</span>
             </label>
             <input
+              className="rounded-lg border-2 block"
               onChange={onchange}
               type="text"
               name="address"
@@ -190,7 +217,21 @@ const UniversityInformation = () => {
             />
           </div>
         </div>
-        <input type="submit" value="EDIT" />
+        <div className="justify-center">
+          <input
+            className="rounded-lg mx-24 w-32 border-2 block bg-sky-400 hover:text-black hover:bg-white text-white"
+            type="submit"
+            value="EDIT"
+          />
+        </div>
+        <div>
+          <button
+            onClick={() => setInstitute(intialState)}
+            className="rounded-lg mx-24 w-32 border-2 bg-red-600 hover:text-black hover:bg-white text-white block"
+          >
+            RESET
+          </button>
+        </div>
       </form>
     </div>
   );

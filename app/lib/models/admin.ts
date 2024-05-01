@@ -45,5 +45,6 @@ const adminSchema: Schema<adminType> = new mongoose.Schema({
   jobDesignation: { type: String, required: true },
 });
 
-const admin = mongoose.model<adminType>("admin", adminSchema);
+const admin =
+  mongoose.models.admin || mongoose.model<adminType>("admin", adminSchema);
 export default admin;

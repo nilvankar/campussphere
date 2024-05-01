@@ -1,11 +1,10 @@
 import { screens } from "@/app/data";
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
 const AcademicsSetupPage = () => {
  
   return (
-    <div className="grid grid-cols-2">
+    <div className="">
       {screens.map((screen, i) => (
         <Link 
           href={screen.href}
@@ -15,8 +14,7 @@ const AcademicsSetupPage = () => {
           {screen.label}
         </Link>
       ))}
-      <Image  src='/images/syllabus_logo.jpeg' alt="Academic setup" className="mx-96" height={300} width={300} />
-    </div>
+      </div>
   );
 };
 

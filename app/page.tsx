@@ -1,13 +1,13 @@
 import React, { Suspense } from "react";
-import Image from "next/image";
 import MainHeader from "./components/MainHeader";
 import { getSession } from "./lib/action";
+import dbConnect from "./db/database";
 const Footer =React.lazy(()=>import( "./components/Footer"));
 const Carousel =React.lazy(()=>import("./components/Carousel"));
 const Page = async() => {
-  const session=await getSession()
-  console.log(session);
+  await dbConnect()
   
+ 
   return (
     <Suspense fallback={<div>...Loading</div>}>
 

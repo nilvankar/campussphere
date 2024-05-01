@@ -1,22 +1,14 @@
-import { randomBytes } from "crypto";
 import mongoose from "mongoose";
 
-
-
-const url:string=process.env.DATABASE_URL as string
+const url: string = process.env.MONGO_URI_LOCAL as string;
 async function dbConnect() {
+  try {
+    const res = await mongoose.connect(url);
 
- try {
-  const res=await mongoose.connect(url);
-  const secret= randomBytes(32).toString('hex')
-  console.log(secret);
-  
-  console.log(`connected`);
-  
- } catch (error) {
-  console.error(error)
- }
-
+    console.log(`connected`);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export default dbConnect;
