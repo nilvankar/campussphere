@@ -103,6 +103,7 @@ export interface subjectType extends Document {
   sno: number;
   subjectName: string;
   subjectCode: string;
+  electiveType: string;
   electiveName: string;
   subjectGroup: string;
 }

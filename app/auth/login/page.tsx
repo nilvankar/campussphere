@@ -3,6 +3,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import Image from "next/image";
 import "@/app/globals.css";
 import { useRouter } from "next/navigation";
+import {UserOutlined,LockFilled} from '@ant-design/icons'
 const LoginPage = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const router = useRouter();
@@ -21,51 +22,40 @@ const LoginPage = () => {
       });
 
       const resData = await res.json();
-      if (res.ok) {
-        console.log("successfuly logged in");
-        setUser(resData)
-        console.log(resData);
-        
-        localStorage.setItem("token", resData.token);
-        console.log(localStorage.getItem("token"));
-        router.push("/private");
+      if(!res.ok){
+        router.push('/auth/login')
       }
+      console.log(resData);
+      const token=await resData.token
+      console.log(token);
+      
+      router.push('/private')
+      
     } catch (error) {
       console.error(error);
       router.push('/auth/login')
     }
   };
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
-      <div className="absolute inset-0 z-30">
-        <Image
-          src="/images/collge_master.jpeg"
-          alt="SIGNUP IMAGE"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-50"
-        />
-      </div>
+    <div className="h-screen w-screen flex justify-center bg-gradient-to-r from-violet-500/95 to-purple-600 items-center">
+     
       <div className="z-50 bg-white bg-opacity-80 p-8 w-2/4 h-4/5 rounded-lg">
+        <h1 className="text-2xl mx-72  block font-extrabold text-blue-500">CampusSphere</h1>
         <Image
           src="/images/campusshere_logo.png"
           alt="CAMPUSSPHERE LOGO"
-          height={50}
-          width={50}
-          className="inline-block rounded-lg border-2 mx-28"
+          height={100}
+          width={100}
+          className="mx-72 block rounded-full border-2"
         />
-        <h3 className="text-lg inline-block">CampusSphere</h3>
-        <hr className="w-80 inline-block mx-28" />
-        <span className="text-gray-500/100 inline-block">
-          A Complete Online Solution for Institutes
-        </span>
-        <hr />
-        <form className="space-y-4 w-2/4 h-4/5" onSubmit={onsubmit} method="POST">
+         
+        <form className="space-y-4 h-48 w-96 mt-12" onSubmit={onsubmit} method="POST">
           <div>
             <label
               htmlFor="email"
               className="block text-sm mx-28 font-medium text-gray-700"
             >
+            <UserOutlined />
               Email Address
             </label>
             <input
@@ -83,6 +73,7 @@ const LoginPage = () => {
               htmlFor="password"
               className="block text-sm mx-28 font-medium text-gray-700"
             >
+            <LockFilled />
               Password
             </label>
             <input
@@ -96,11 +87,13 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="bg-blue-500 ml-40 text-white px-4 py-2 rounded-md hover:bg-blue-600"
           >
-            Get Demo Credentials
+          LOGIN
           </button>
         </form>
+          <button className="text-blue-500 hover:text-blue-300"  onClick={()=>router.push('/auth/forgot_password')} >forgot password?</button>
+          
       </div>
     </div>
   );

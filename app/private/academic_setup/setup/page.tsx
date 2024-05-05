@@ -1,12 +1,12 @@
+
 import { screens } from "@/app/data";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 const AcademicsSetupPage = () => {
- 
   return (
-    <div className="">
+    <div className="overscroll-y-none">
       {screens.map((screen, i) => (
-        <Link 
+        <Link
           href={screen.href}
           className="bg-blue-400 block w-32 h-12 decoration-transparent text-white brightness-95 hover:brightness-100 border-2 mx-12"
           key={i}
@@ -14,6 +14,7 @@ const AcademicsSetupPage = () => {
           {screen.label}
         </Link>
       ))}
+     
       </div>
   );
 };

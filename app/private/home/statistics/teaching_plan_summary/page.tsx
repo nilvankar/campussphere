@@ -6,7 +6,7 @@ const TeachingPlan = () => {
   const [teachingPlan, setTeachingPlan] = useState([])
   return (
     <div>
-          <div className="flex flex-row justify-around">
+          <div className="flex flex-row justify-between w-96 mx-32">
             <div>
               <label className="block" htmlFor="branch">Branch</label>
               <select name="branch" id="branch">
@@ -38,16 +38,32 @@ const TeachingPlan = () => {
             <div><label className="block" htmlFor="toDate">To Date</label><input type="date" name="toDate" id="toDate" /></div>
           </div>
           <table className="table border-2">
-            <thead className="table-header-group">
+            <thead className="">
+              <tr>
+
               {teaching_plan_summary.map((teachingPlan, i) => (
-                <tr
-                  className="table-cell text-lg font-semibold border-2 text-center"
-                  key={i}
+                <th
+                className="table-cell text-lg font-semibold border-2 text-center"
+                key={i}
                 >
                   {teachingPlan.label}
-                </tr>
+                </th>
               ))}
+              </tr>
             </thead>
+            <tbody>
+              <tr>
+                <td>Mathamatics</td>
+                <td>Statistics</td>
+                <td>2</td>
+                <td>11:20-12:20</td>
+                <td>1</td>
+                <td>22-02-2024</td>
+                <td>22-02-2024</td>
+                <td>complete</td>
+                <td>23</td>
+              </tr>
+            </tbody>
           </table>
         </div>
   )

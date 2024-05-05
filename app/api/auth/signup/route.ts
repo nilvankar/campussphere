@@ -2,6 +2,7 @@ import dbConnect from "@/app/db/database";
 import User, { userType } from "@/app/lib/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import { genSalt, hash } from "bcryptjs";
+
 export const POST = async (req: NextRequest, res: NextResponse) => {
   if (req.method === "POST") {
     try {
@@ -18,11 +19,14 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         role: role,
         password: hashPass,
       });
-
+     
       return NextResponse.json(
         { sccess: true, message: "Successfully signup" },
         { status: 201 }
       );
+
+      // sending mail
+
     } catch (error) {
       console.error(error);
       return NextResponse.json({ error: error }, { status: 500 });

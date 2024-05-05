@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+
 const UniversityInformation = () => {
   const router = useRouter();
   const intialState = {
@@ -79,6 +80,7 @@ const UniversityInformation = () => {
               type="file"
               name="logo"
               value={logo}
+              
               id="logo"
             />
           </div>

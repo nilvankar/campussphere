@@ -5,8 +5,8 @@ import React, { useState } from 'react'
 const VisitorsSummary = () => {
   const [visitors, setVisitors] = useState([])
   return (
-    <div>
-          <div className="flex flex-row justify-around">
+    <div className='h-screen w-screen overflow-y-scroll'>
+          <div className="flex flex-row justify-between  w-96 mx-32">
             <div>
               <label className="block" htmlFor="branch">Branch</label>
               <select name="branch" id="branch">
@@ -38,16 +38,30 @@ const VisitorsSummary = () => {
             </div>
           </div>
           <table className="table border-2">
-            <thead className="table-header-group">
+            <thead>
+
+            <tr className="">
               {Visitor.map((visitor, i) => (
-                <tr
-                  key={i}
-                  className="table-cell text-lg font-semibold border-2 text-center"
+                <th
+                key={i}
+                className="border-2"
                 >
                   {visitor.label}
-                </tr>
+                </th>
               ))}
-            </thead>
+            </tr>
+              </thead>
+          <tbody>
+            <tr>
+              <td className='border-2'>1</td>
+              <td className='border-2'>Nitin Patel</td>
+              <td className='border-2'>nitin@43gmail.com</td>
+              <td className='border-2'>Engineering</td>
+              <td className='border-2'>19/02/2024</td>
+              <td className='border-2'>8128863575</td>
+              <td className='border-2'>Admission</td>
+            </tr>
+          </tbody>
           </table>
         </div>
   )

@@ -81,27 +81,36 @@ const vehicalSummarySchema: Schema<vehicalSummarySchemaType> =
     available_seats: { type: Number, required: true },
   });
 
-export const userModel = mongoose.model<userSummarySchemaType>(
-  "user_summary",
-  userSummarySchema
-);
-export const vehicalModel = mongoose.model<vehicalSummarySchemaType>(
-  "vehical_summary",
-  vehicalSummarySchema
-);
-export const visitorModel = mongoose.model<visitorSummarySchemaType>(
-  "visitors_summary",
-  visitorSummarySchema
-);
-export const teachingplan = mongoose.model<teachingPlanSummarySchemaType>(
-  "teaching_plan_summary",
-  teachingPlanSummarySchema
-);
-export const toppersmodel = mongoose.model<toppersSummarySchemaType>(
-  "toppers_summary",
-  toppersSummarySchema
-);
-export const domitoryModel = mongoose.model<domitorySummarySchemaType>(
-  "domitory_summary",
-  domitorySummarySchema
-);
+export const userModel =
+  mongoose.models.user_summary ||
+  mongoose.model<userSummarySchemaType>("user_summary", userSummarySchema);
+export const vehicalModel =
+  mongoose.models.vehical_summary ||
+  mongoose.model<vehicalSummarySchemaType>(
+    "vehical_summary",
+    vehicalSummarySchema
+  );
+export const visitorModel =
+  mongoose.models.visitors_summary ||
+  mongoose.model<visitorSummarySchemaType>(
+    "visitors_summary",
+    visitorSummarySchema
+  );
+export const teachingplan =
+  mongoose.models.teaching_plan_summary ||
+  mongoose.model<teachingPlanSummarySchemaType>(
+    "teaching_plan_summary",
+    teachingPlanSummarySchema
+  );
+export const toppersmodel =
+  mongoose.models.toppers_summary ||
+  mongoose.model<toppersSummarySchemaType>(
+    "toppers_summary",
+    toppersSummarySchema
+  );
+export const domitoryModel =
+  mongoose.models.domitory_summary ||
+  mongoose.model<domitorySummarySchemaType>(
+    "domitory_summary",
+    domitorySummarySchema
+  );

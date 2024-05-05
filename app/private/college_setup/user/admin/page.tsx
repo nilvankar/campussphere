@@ -1,10 +1,10 @@
 "use client";
+import useFetch from "@/app/hooks/useFetch";
+import { branchType } from "@/app/lib/types/schema";
 import { PlusCircleFilled } from "@ant-design/icons";
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 const AdminRegistration = () => {
-  const [qualification, setQualification] = useState(false);
-  const [expi, setExpi] = useState(false);
   const init = {
     firstName: "",
     lastName: "",
@@ -44,6 +44,27 @@ const AdminRegistration = () => {
     profilePhoto,
     salary,
   } = init;
+
+  const onchange = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setAdmin((prev) => ({ ...prev, [name]: value }));
+  };
+  const onsubmit = async (e: FormEvent<HTMLFormElement>) => {
+    try {
+      const res = await fetch("/api/college_setup/user/admin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(admin),
+      });
+      const data = res.json();
+      if (res.ok) {
+        console.log("successfully add new admin");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const [data] = useFetch("/api/college_setup/user/admin");
   return (
     <div className="h-screen w-screen ">
       <div className="flex w-96 mx-24 justify-around border-2">
@@ -55,6 +76,10 @@ const AdminRegistration = () => {
             <option value="" hidden>
               Select
             </option>
+            {data &&
+              data.map((item:branchType) => {
+                return <option key={item._id}>{item.branchName}</option>;
+              })}
           </select>
         </div>
         <div>
@@ -70,11 +95,10 @@ const AdminRegistration = () => {
       </div>
 
       <form
+        onSubmit={() => onsubmit}
         action=""
         method="POST"
-        className={
-          expi || qualification ? "hidden" : "grid grid-cols-2 gap-4 max-w-xl"
-        }
+        className={"grid grid-cols-2 gap-4 max-w-xl"}
         style={{ gridTemplateColumns: "" }}
       >
         <div className="border-2">
@@ -190,37 +214,33 @@ const AdminRegistration = () => {
           </div>
         </div>
         <input type="submit" value="Register" />
-        <button onClick={() => setAdmin(init)}>clear</button>
+        <button>clear</button>
       </form>
 
       <div>
-        <button onClick={() => setQualification(!qualification)}>
+        <button>
           Qualifications Details
           <PlusCircleFilled className="hover:text-white" />
         </button>
-        <table className={expi ? "hidden" : "border-2 table"}>
-          <thead className="table-header-group">
+        <table className={"border-2 table"}>
+          <th className="table-header-group">
             <tr className="table-cell border-2 text-center">Qualifications</tr>
             <tr className="table-cell border-2 text-center">Uniersity</tr>
             <tr className="table-cell border-2 text-center">Institue Name</tr>
             <tr className="table-cell border-2 text-center">YearOfPassing</tr>
             <tr className="table-cell border-2 text-center">Percentage</tr>
             <tr className="table-cell border-2 text-center">Marks_Memo</tr>
-          </thead>
+          </th>
           <tbody></tbody>
         </table>
       </div>
+      <button>
+        Add Experience
+        <PlusCircleFilled className="hover:text-white" />
+      </button>
       <div>
-        <button onClick={() => setExpi(!expi)}>
-          Add Experience
-          <PlusCircleFilled className="hover:text-white" />
-        </button>
-        <table
-          className={
-            qualification ? "hidden" : "grid grid-cols-2 gap-4 max-w-xl"
-          }
-        >
-          <thead className="table-header-group">
+        <table className={"grid grid-cols-2 gap-4 max-w-xl"}>
+          <th className="table-header-group">
             <tr className="border-2 table-cell">Institue Name</tr>
             <tr className="border-2 table-cell">Desigation</tr>
             <tr className="border-2 table-cell">From Date</tr>
@@ -229,7 +249,7 @@ const AdminRegistration = () => {
             <tr className="border-2 table-cell">Starting Salary</tr>
             <tr className="border-2 table-cell">Ending Salary</tr>
             <tr className="border-2 table-cell">Attatchments</tr>
-          </thead>
+          </th>
         </table>
       </div>
     </div>

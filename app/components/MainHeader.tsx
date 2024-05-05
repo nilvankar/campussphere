@@ -9,7 +9,7 @@ const MainHeader = () => {
   const [resources, setResources] = useState(false);
   const [company, setCompany] = useState(false);
   return (
-    <div className="border-2 bg-gradient-to-r flex flex-row   from-blue-700/100 to-blue-600/95">
+    <div className="border-2 bg-gradient-to-r flex flex-row   from-blue-700/100 to-blue-600/95" style={{height:"20rem"}}>
       <Image
         src="/images/campusshere_logo.png"
         alt="LOGO"

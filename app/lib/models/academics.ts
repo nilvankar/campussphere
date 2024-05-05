@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, {  Schema } from "mongoose";
 import { batchType, sectionType, subjectType } from "../types/schema";
 
 const batchSchema: Schema<batchType> = new mongoose.Schema({
@@ -19,10 +19,15 @@ const subjectManagement: Schema<subjectType> = new mongoose.Schema({
   sno: { type: Number, required: true },
   subjectName: { type: String, required: true },
   subjectCode: { type: String, required: true },
-  electiveName: {
+  electiveType: {
     type: String,
     required: true,
     enum: ["Elective", "Non-Elective"],
+  },
+  electiveName: {
+    type: String,
+    required: true,
+  
   },
   subjectGroup: { type: String, required: true, enum: ["Theory", "Practicle"] },
 });

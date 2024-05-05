@@ -71,25 +71,97 @@ const StudentRegistration = () => {
               <tr className="table-cell border-2 text-center">Student Name</tr>
               <tr className="table-cell border-2 text-center">CourseYear</tr>
             </thead>
-            <tbody>
-
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
       </div>
-      <div className="border-2 grid grid-rows-3" style={{gridTemplateRows:"30rem 7rem 7rem"}}>
-        <form action=""  className="border-2 grid grid-cols-3" method="POST">
-          <div className="border-2"></div>
+      <div
+        className="border-2 grid grid-rows-3"
+        style={{ gridTemplateRows: "30rem 7rem 7rem" }}
+      >
+        <form action="" className="border-2 grid grid-cols-3" method="POST">
+          <div className="border-2">
+            <div>
+              <label htmlFor="firstName">FirstName</label>
+              <input type="text" name="firstName" id="firstName" />
+            </div>
+            <div>
+              <label htmlFor="lastName">Last Name</label>
+              <input type="text" name="lastName" id="lastName" />
+            </div>
+            <div>
+              <label htmlFor="middleName">MiddleName</label>
+              <input type="text" name="middleName" id="middleName" />
+            </div>
+            <div>
+              <label htmlFor="dob">DOB</label>
+              <input type="date" name="dob" id="dob" />
+            </div>
+            <div>
+              <label htmlFor="gender">Gender</label>
+              <select name="gender" id="gender">
+                <option value="" hidden>
+                  Select
+                </option>
+                <option value="Male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="maritalStatus">MaritalStatus</label>
+              <select name="maritalStatus" id="maritalStatus">
+                <option value="" hidden>
+                  <option value="married">Married</option>
+                  <option value="unMarried">UnMarried</option>
+                </option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="adharNo">AdharNo</label>
+              <input type="number" name="adharNo" id="adharNo" />
+            </div>
+            <div>
+              <label htmlFor="panNo">PanNo</label>
+              <input type="number" name="panNo" id="panNo" accept="number" />
+            </div>
+          </div>
           <div className="border-2"></div>
           <div className="border-2"></div>
         </form>
         <div className="border-2">
-          <span>Language Proefficiency<PlusCircleFilled className="hover:text-white"/></span>
+          <span>
+            Language Proefficiency
+            <PlusCircleFilled className="hover:text-white" />
+            <table className="table">
+              <thead className="table-header-group">
+                <tr className="table-cell">Language</tr>
+                <tr className="table-cell">Listening</tr>
+                <tr className="table-cell">Speaking</tr>
+                <tr className="table-cell">Reading</tr>
+                <tr className="table-cell">Writing</tr>
+              </thead>
+            </table>
+          </span>
         </div>
-        <div className="border-2"></div>
-          <span>Family Details<PlusCircleFilled className="hover:text-white"/></span>
+        <div className="border-2">
+          <span>
+            Family Details
+            <PlusCircleFilled className="hover:text-white" />
+          </span>
+          <table className="table">
+            <thead className="table-header-group">
+              <tr className="table-cell">Relation</tr>
+              <tr className="table-cell">FirstName</tr>
+              <tr className="table-cell">LastName</tr>
+              <tr className="table-cell">MiddleName</tr>
+            </thead>
+          </table>
+        </div>
       </div>
-      <div className="border-2"></div>
+      <div className="border-2">
+        <input type="submit" value="SAVE" />
+      </div>
     </div>
   );
 };

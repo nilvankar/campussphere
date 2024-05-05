@@ -1,17 +1,20 @@
 "use client";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import useFetch from "@/app/hooks/useFetch";
+import { instituteType } from "@/app/lib/models/institute";
 
 const SignUpPage = () => {
   const router = useRouter();
-  const [user, setUser] = useState({
+  const initalState = {
     email: "",
     fullName: "",
     instituteName: "",
     password: "",
     role: "",
-  });
+  };
+  const [user, setUser] = useState(initalState);
   const onsubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -40,19 +43,13 @@ const SignUpPage = () => {
       console.error(error);
     }
   };
+  const [data] = useFetch("/api/college_setup/institute/university");
+  console.log(data);
+
   const { email, fullName, password, role, instituteName } = user;
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
-      <div className="absolute inset-0 z-30">
-        <Image
-          src="/images/collge_master.jpeg"
-          alt="SIGNUP IMAGE"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-50"
-        />
-      </div>
-      <div className="z-50 bg-white bg-opacity-80 p-8 w-2/4 h-4/5 rounded-lg">
+    <div className="h-screen w-screen flex justify-center bg-gradient-to-r from-violet-500/95 to-purple-600  items-center">
+      <div className="z-50 bg-white bg-opacity-80  p-8 w-2/4 h-4/5 rounded-lg">
         <Image
           src="/images/campusshere_logo.png"
           alt="CAMPUSSPHERE LOGO"
@@ -127,15 +124,25 @@ const SignUpPage = () => {
             >
               Institute Name
             </label>
-            <input
-              required
+            <select
+              className="input-field rounded-lg border-2 w-80 mx-28"
               onChange={onchange}
               value={instituteName}
-              type="text"
-              id="instituteName"
               name="instituteName"
-              className="input-field rounded-lg border-2 w-80 mx-28"
-            />
+              id="instituteName"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+              {data &&
+                data.map((item: instituteType) => {
+                  return (
+                    <option value={item._id} key={item.instituteName}>
+                      {item.instituteName}
+                    </option>
+                  );
+                })}
+            </select>
           </div>
           <div>
             <label

@@ -29,7 +29,7 @@ export const modules: modulesType[] = [
   },
   {
     href: "/private/college_master",
-    imageSRC: "/images/collge_master.jpeg",
+    imageSRC: "/images/college_master.jpeg",
     height: 200,
     width: 200,
     alt: "Collge Master",
@@ -65,7 +65,7 @@ export const modules: modulesType[] = [
   },
   {
     href: "/private/college_operations",
-    imageSRC: "/images/collge_master.jpeg",
+    imageSRC: "/images/college_operations.jpeg",
     height: 200,
     width: 200,
     alt: "Collge Operations",
@@ -86,14 +86,14 @@ export const modules: modulesType[] = [
   },
   {
     href: "/private/transporation",
-    imageSRC: "/images/vehical_mgmt.jpeg",
+    imageSRC: "/images/bus_logo.jpg",
     height: 200,
     width: 200,
     alt: "Transportation",
   },
   {
     href: "/private/academic_history",
-    imageSRC: "/images/academic_history.jpeg",
+    imageSRC: "/images/lead_mgmt_final.jpeg",
     height: 200,
     width: 200,
     alt: "Academic History",
@@ -107,7 +107,7 @@ export const modules: modulesType[] = [
   },
   {
     href: "/private/lead_mgmt_module",
-    imageSRC: "/images/lead_mgmt_logo.jpeg",
+    imageSRC: "/images/lead_mgmt_final.jpeg",
     height: 200,
     width: 200,
     alt: "Lead Managment",
@@ -354,6 +354,14 @@ export const months=[
   {label:"NOV"},
   {label:"DEC"},
 ]
+export const weekDays=[
+  {label:"Monday"},
+  {label:"TuesDay"},
+  {label:"WednesDay"},
+  {label:"ThursDay"},
+  {label:"Friday"},
+  {label:"SaturDay"},
+]
 export const teaching_plan_summary=[
   {label:"Subject"},
   {label:"Lesson Name"},
@@ -409,3 +417,11 @@ export const userMgmtModules=[
   {href:"/user_managment/past_users",src:"/images/past_users.jpeg",height:200,width:200,alt:"Past Users"},
   {href:"/user_managment/authorization",src:"/images/auth_img.jpeg",height:200,width:200,alt:"Authorization"},
 ]
+export const getYears = () => {
+  const list = [];
+  const currYear = new Date().getFullYear();
+  for (let i = 2000; i <= currYear; i++) {
+    list.push(i);
+  }
+  return list;
+};
