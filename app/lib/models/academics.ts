@@ -43,7 +43,7 @@ const sectionSchema: Schema<sectionType> = new mongoose.Schema({
 
 // models
 export const subject =
-  mongoose.models.subjectManagement ||
+  mongoose.models.subject ||
   mongoose.model("subject", subjectManagement);
 export const section =
   mongoose.models.section || mongoose.model("section", sectionSchema);

@@ -1,23 +1,41 @@
-"use client";
+'use client'
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useFetch from "@/app/hooks/useFetch";
 import { instituteType } from "@/app/lib/models/institute";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const SignUpPage = () => {
+  const [instituteName, setInstituteName] = useState([])
+  const userSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6).max(8),
+    instituteName: z.string(),
+    fullName: z.string(),
+    role: z.string(),
+  });
+
   const router = useRouter();
-  const initalState = {
+  const initialState = {
     email: "",
     fullName: "",
     instituteName: "",
     password: "",
     role: "",
   };
-  const [user, setUser] = useState(initalState);
-  const onsubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const [user, setUser] = useState<typeof initialState>(initialState);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<typeof user>({
+    resolver: zodResolver(userSchema),
+  });
 
+  const onsubmit = async (user: typeof initialState) => {
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -27,13 +45,13 @@ const SignUpPage = () => {
       const resData = await res.json();
       if (res.ok) {
         console.log("successfully signup", resData);
-
         router.push("/");
       }
     } catch (error) {
       console.error(error);
     }
   };
+
   const onchange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     try {
       e.preventDefault();
@@ -43,10 +61,13 @@ const SignUpPage = () => {
       console.error(error);
     }
   };
-  const [data] = useFetch("/api/college_setup/institute/university");
+
+  const [data] = useFetch(
+    "/api/college_setup/institute/university",
+    instituteName
+  );
   console.log(data);
 
-  const { email, fullName, password, role, instituteName } = user;
   return (
     <div className="h-screen w-screen flex justify-center bg-gradient-to-r from-violet-500/95 to-purple-600  items-center">
       <div className="z-50 bg-white bg-opacity-80  p-8 w-2/4 h-4/5 rounded-lg">
@@ -63,112 +84,74 @@ const SignUpPage = () => {
           A Complete Online Solution for Institutes
         </span>
         <hr />
-        <form className="space-y-4 w-2/4 h-4/5" onSubmit={onsubmit}>
+        <form
+          className="space-y-4 w-2/4 h-4/5"
+          onSubmit={handleSubmit(onsubmit)}
+        >
           <div>
-            <label
+            <label className="block text-sm mx-28 font-medium text-gray-700"
               htmlFor="fullName"
-              className="block text-sm mx-28 font-medium text-gray-700"
-            >
+                >
               Name
             </label>
             <input
               required
-              value={fullName}
-              onChange={onchange}
+              {...register("fullName")}
               type="text"
               id="fullName"
               name="fullName"
               className="input-field rounded-lg border-2 w-80 mx-28"
             />
+            {errors.fullName && <p>{errors.fullName.message}</p>}
           </div>
 
           <div>
-            <label
+            <label className="block text-sm mx-28 font-medium text-gray-700"
               htmlFor="email"
-              className="block text-sm mx-28 font-medium text-gray-700"
+             
             >
               Email Address
             </label>
             <input
               required
-              value={email}
-              onChange={onchange}
+              {...register("email")}
               type="email"
               id="email"
               name="email"
               className="input-field rounded-lg border-2 w-80 mx-28"
             />
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm mx-28 font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              required
-              type="password"
-              name="password"
-              id="password"
-              className="input-field rounded-lg border-2 w-80 mx-28"
-              onChange={onchange}
-              value={password}
-            />
+          <div><label className="block text-sm mx-28 font-medium text-gray-700" htmlFor="password">Password</label>
+          <input className="input-field rounded-lg border-2 w-80 mx-28" type="password" name="password" id="password" />
+          
           </div>
-
-          <div>
-            <label
-              htmlFor="instituteName"
-              className="block text-sm mx-28 font-medium text-gray-700"
-            >
+            <label className="block text-sm mx-28 font-medium text-gray-700" htmlFor="instituteName">Institute Name</label>
+            <select name="instituteName" className="input-field rounded-lg border-2 w-80 mx-28" id="instituteName">
               Institute Name
-            </label>
-            <select
-              className="input-field rounded-lg border-2 w-80 mx-28"
-              onChange={onchange}
-              value={instituteName}
-              name="instituteName"
-              id="instituteName"
-            >
               <option value="" hidden>
                 Select
               </option>
-              {data &&
-                data.map((item: instituteType) => {
-                  return (
-                    <option value={item._id} key={item.instituteName}>
-                      {item.instituteName}
-                    </option>
-                  );
-                })}
+              {data.map((val: string, i: number) => (
+                <option value={val} key={i} >
+                  {val}
+                </option>
+              ))}
             </select>
           </div>
-          <div>
-            <label
-              htmlFor="role"
-              className="block text-sm mx-28 font-medium text-gray-700"
-            >
-              Your Role in Institute
-            </label>
-            <select
-              value={role}
-              onChange={onchange}
-              required
-              id="role"
-              name="role"
-              className="input-field rounded-lg border-2 w-80 mx-28"
-            >
-              <option value="" disabled hidden>
-                Select Role
-              </option>
-              <option value="Principal">Admin or Principal</option>
-              <option value="Director">Director</option>
-              <option value="Student or Parent">Student or Parent</option>
-              <option value="Staff or Faculty">Staff or Faculty</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+        <div>
+          <label className="block text-sm mx-28 font-medium text-gray-700" htmlFor="role">Your Role</label>
+          <select className="input-field rounded-lg border-2 w-80 mx-28" name="role" id="role"><option value="" hidden>Select</option>
+          <option value="director">Director</option>
+          <option value="principal">Principal</option>
+          <option value="staffFaculty">Staff or Faculty</option>
+          <option value="studentParent">Student or Parent</option>
+          <option value="other">Other</option>
+          </select>
+        </div>
+          {/* Similarly, add validation errors for other fields */}
+
           <button
             type="submit"
             className="bg-blue-500 text-white ml-32 px-4 py-2 rounded-md hover:bg-blue-600"

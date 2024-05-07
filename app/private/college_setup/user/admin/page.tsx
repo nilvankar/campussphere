@@ -24,6 +24,7 @@ const AdminRegistration = () => {
     contactNo: "",
     jobDesignation: "",
   };
+  const [branchName, setBranchName] = useState(false)
   const [admin, setAdmin] = useState(init);
   const {
     address,
@@ -64,7 +65,7 @@ const AdminRegistration = () => {
       console.error(error);
     }
   };
-  const [data] = useFetch("/api/college_setup/user/admin");
+  const [data] = useFetch("/api/college_setup/user/admin",branchName);
   return (
     <div className="h-screen w-screen ">
       <div className="flex w-96 mx-24 justify-around border-2">

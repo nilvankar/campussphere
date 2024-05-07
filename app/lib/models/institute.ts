@@ -10,12 +10,12 @@ export interface instituteType extends Document {
   contactno: number;
   officeno: number;
   panNo: number;
-  logo: string;
+  instituteLogo: string;
   address: string;
 }
 const institute: Schema<instituteType> = new mongoose.Schema({
   email: { type: String, required: true },
-  logo: { type: String, required: true },
+  instituteLogo: { type: String, required: true },
   alternateEmail: { type: String, required: true },
   instituteName: { type: String, required: false },
   founderName: { type: String, required: true },

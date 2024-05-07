@@ -66,8 +66,8 @@ const UniversityInformation = () => {
       <form
         method="PUT"
         onSubmit={handleSubmit}
-        className="grid grid-cols-3 "
-        style={{ gridTemplateColumns: "" }}
+        className="grid grid-cols-3 mt-10 ml-20 "
+        style={{ gridTemplateColumns: "",width:"61rem",height:"37rem" }}
       >
         <div className="border-2">
           <div className="justify-center">
@@ -219,21 +219,24 @@ const UniversityInformation = () => {
             />
           </div>
         </div>
-        <div className="justify-center">
+        <div className="inline-flex justify-around mt-28">
+
+        <div className="">
           <input
             className="rounded-lg mx-24 w-32 border-2 block bg-sky-400 hover:text-black hover:bg-white text-white"
             type="submit"
             value="EDIT"
-          />
+            />
         </div>
         <div>
           <button
             onClick={() => setInstitute(intialState)}
             className="rounded-lg mx-24 w-32 border-2 bg-red-600 hover:text-black hover:bg-white text-white block"
-          >
+            >
             RESET
           </button>
         </div>
+            </div>
       </form>
     </div>
   );

@@ -26,3 +26,25 @@ body {
     text-wrap: balance;
   }
 }
+
+.form-child {
+  height: 77vh;
+  width: 52vw;
+  margin-left: 45rem;
+  margin-top: 8rem;
+}
+
+.numberInput {
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+    appearance: var(--background-end-rgb);
+  }
+}

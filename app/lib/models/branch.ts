@@ -33,7 +33,7 @@ const yearOfExperienceSchema: Schema<yearOfExperience> = new mongoose.Schema({
   endingSalary: { type: Number, required: true },
   attatchments: { type: String, required: true },
 });
-export const yearOfExperienceModel=mongoose.models.yearOfExperienceSchema||mongoose.model('yearOfExperience',yearOfExperienceSchema)
+export const yearOfExperienceModel=mongoose.models.yearOfExperience||mongoose.model('yearOfExperience',yearOfExperienceSchema)
 
 const branchModel =
   mongoose.models.branch || mongoose.model<branchType>("branch", branch);

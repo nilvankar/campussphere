@@ -146,3 +146,40 @@ export interface yearOfExperience extends Document {
   endingSalary: number;
   attatchments: string;
 }
+
+export interface dormBuildingType extends Document {
+  BuldingName: string;
+  DomType: string;
+  NumberofFloor: number;
+  InCharge: string;
+  MaximumCapacityl: number;
+}
+
+export interface roomMgmtType extends Document {
+  FloorNo: number;
+  RoomType: string;
+  RoomNo: number;
+  TotalBeds: number;
+  AvailableBeds: number;
+}
+export interface dormTimetableType extends Document {
+  DormitoryActivity: string;
+  StartTime: string;
+  EndTime: string;
+}
+export interface dormVisitorsType extends Document {
+  dateOfVisit: string;
+  whom: string;
+  visitorName: string;
+  relation: string;
+  purpose: string;
+  mobileNumber: number;
+  checkInTime: string;
+  checkOutTime: string;
+}
+export interface outPassType extends Document{
+ Status:string
+}
+export interface wardenType extends Document {
+  wardenName: string;
+}

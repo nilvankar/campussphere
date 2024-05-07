@@ -1,6 +1,7 @@
 import connectDb from "@/app/db/database";
-import branchModel, { branchType } from "@/app/lib/models/branch";
+import branchModel from "@/app/lib/models/branch";
 import instituteCollection from "@/app/lib/models/institute";
+import { branchType } from "@/app/lib/types/schema";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
@@ -68,7 +69,7 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
         address,
         instituteName,
       } = reqBody;
-      const res = await branchModel.updateOne({
+      const res:branchType = await branchModel.updateOne({
         branchLogo: branchLogo,
         branchName: branchName,
         registrationNumber: registrationNumber,

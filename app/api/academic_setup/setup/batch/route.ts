@@ -1,8 +1,9 @@
-
+import dbConnect from "@/app/db/database";
 import { batch } from "@/app/lib/models/academics";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
+  await dbConnect()
   if (req.method === "POST") {
     const reqBody = await req.json();
     const {
@@ -34,3 +35,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
   }
 }
+
+export const GET = async (req: NextRequest, res: NextResponse) => {
+  await dbConnect()
+  if (req.method === "GET") {
+    try {
+      const res = await batch.find({});
+      return NextResponse.json(res, { status: 200 });
+    } catch (error) {
+      console.error(error);
+      return NextResponse.json(error, { status: 500 });
+    }
+  }
+};

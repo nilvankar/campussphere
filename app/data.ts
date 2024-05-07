@@ -112,13 +112,7 @@ export const modules: modulesType[] = [
     width: 200,
     alt: "Lead Managment",
   },
-  {
-    href: "/private/reports",
-    imageSRC: "/images/reports.jpeg",
-    height: 200,
-    width: 200,
-    alt: "Reports",
-  },
+ 
 ];
 
 interface adminType {
@@ -130,7 +124,7 @@ interface adminType {
 }
 export const adminModules: adminType[] = [
   {
-    href: "private/admin_module/account_activity",
+    href: "/private/admin_module/account_activity",
     src: "/images/account_logo.jpeg",
     width: 200,
     height: 200,
@@ -238,7 +232,7 @@ export const sideNavItems = [
     alt: "Academic History",
   },
   {
-    href: "/private//domitory",
+    href: "/private/domitory",
 
     alt: "Domitory",
   },
@@ -340,39 +334,39 @@ export const userStatistics = [
   { label: "Total Count" },
 ];
 
-export const months=[
-  {label:"JAN"},
-  {label:"FEB"},
-  {label:"MAR"},
-  {label:"APR"},
-  {label:"MAY"},
-  {label:"JUN"},
-  {label:"JUL"},
-  {label:"AUG"},
-  {label:"SEP"},
-  {label:"OCT"},
-  {label:"NOV"},
-  {label:"DEC"},
-]
-export const weekDays=[
-  {label:"Monday"},
-  {label:"TuesDay"},
-  {label:"WednesDay"},
-  {label:"ThursDay"},
-  {label:"Friday"},
-  {label:"SaturDay"},
-]
-export const teaching_plan_summary=[
-  {label:"Subject"},
-  {label:"Lesson Name"},
-  {label:"Lesson No"},
-  {label:"Lesson Plan"},
-  {label:"No Of Period"},
-  {label:"From Date"},
-  {label:"To Date"},
-  {label:"Status"},
-  {label:"Actual completion date"},
-]
+export const months = [
+  { label: "JAN" },
+  { label: "FEB" },
+  { label: "MAR" },
+  { label: "APR" },
+  { label: "MAY" },
+  { label: "JUN" },
+  { label: "JUL" },
+  { label: "AUG" },
+  { label: "SEP" },
+  { label: "OCT" },
+  { label: "NOV" },
+  { label: "DEC" },
+];
+export const weekDays = [
+  { label: "Monday" },
+  { label: "TuesDay" },
+  { label: "WednesDay" },
+  { label: "ThursDay" },
+  { label: "Friday" },
+  { label: "SaturDay" },
+];
+export const teaching_plan_summary = [
+  { label: "Subject" },
+  { label: "Lesson Name" },
+  { label: "Lesson No" },
+  { label: "Lesson Plan" },
+  { label: "No Of Period" },
+  { label: "From Date" },
+  { label: "To Date" },
+  { label: "Status" },
+  { label: "Actual completion date" },
+];
 export const screens = [
   { label: "Academic Batch", href: "/private/academic_setup/setup/batch" },
   {
@@ -409,14 +403,50 @@ export const screens = [
     href: "/private/academic_setup/setup/course_design",
   },
 ];
-export const userMgmtModules=[
-  {href:"/user_managment/staff_mgmt",src:"/images/staff_image.jpeg",height:200,width:200,alt:"Staff Management"},
-  {href:"/user_managment/job_placement",src:"/images/jobs_img.jpeg",height:200,width:200,alt:"Job and Placement"},
-  {href:"/user_managment/student_mgmt",src:"/images/student_logo.jpg",height:200,width:200,alt:"Student Management"},
-  {href:"/user_managment/student_attendance",src:"/images/staff_attendance.jpeg",height:200,width:200,alt:"Student Attendance"},
-  {href:"/user_managment/past_users",src:"/images/past_users.jpeg",height:200,width:200,alt:"Past Users"},
-  {href:"/user_managment/authorization",src:"/images/auth_img.jpeg",height:200,width:200,alt:"Authorization"},
-]
+export const userMgmtModules = [
+  {
+    href: "/private/user_managment/staff_mgmt",
+    src: "/images/staff_image.jpeg",
+    height: 200,
+    width: 200,
+    alt: "Staff Management",
+  },
+  {
+    href: "/private/user_managment/job_placement",
+    src: "/images/jobs_img.jpeg",
+    height: 200,
+    width: 200,
+    alt: "Job and Placement",
+  },
+  {
+    href: "/private/user_managment/student_mgmt",
+    src: "/images/student_logo.jpg",
+    height: 200,
+    width: 200,
+    alt: "Student Management",
+  },
+  {
+    href: "/private/user_managment/student_attendance",
+    src: "/images/staff_attendance.jpeg",
+    height: 200,
+    width: 200,
+    alt: "Student Attendance",
+  },
+  {
+    href: "/private/user_managment/past_users",
+    src: "/images/past_users.jpeg",
+    height: 200,
+    width: 200,
+    alt: "Past Users",
+  },
+  {
+    href: "/private/user_managment/authorization",
+    src: "/images/auth_img.jpeg",
+    height: 200,
+    width: 200,
+    alt: "Authorization",
+  },
+];
 export const getYears = () => {
   const list = [];
   const currYear = new Date().getFullYear();

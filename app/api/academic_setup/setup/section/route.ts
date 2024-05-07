@@ -1,23 +1,29 @@
 import dbConnect from "@/app/db/database";
-import { subject } from "@/app/lib/models/academics";
+import { section } from "@/app/lib/models/academics";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   if (req.method === "POST") {
-    await dbConnect();
     const reqBody = await req.json();
-    const { sno, subjectName, subjectCode, electiveName, subjectGroup } =
-      reqBody;
+    const {
+      section,
+      degreeCode,
+      courseYear,
+      maxStrength,
+      primaryFaculty,
+      secondaryFaculty,
+    } = reqBody;
     try {
-      const newSubject = await subject.create({
-        sno: sno,
-        subjectName: subjectName,
-        subjectCode: subjectCode,
-        electiveName: electiveName,
-        subjectGroup: subjectGroup,
+      const res = await section.create({
+        section: section,
+        degreeCode: degreeCode,
+        courseYear: courseYear,
+        maxStrength: maxStrength,
+        primaryFaculty: primaryFaculty,
+        secondaryFaculty: secondaryFaculty,
       });
       return NextResponse.json(
-        { success: true, message: "successfuly add subject" },
+        { success: true, message: "Section Create" },
         { status: 200 }
       );
     } catch (error) {
@@ -26,10 +32,12 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     }
   }
 };
+
 export const GET = async (req: NextRequest, res: NextResponse) => {
+  await dbConnect();
   if (req.method === "GET") {
     try {
-      const res = await subject.find({});
+      const res = await section.find({});
       return NextResponse.json(res, { status: 200 });
     } catch (error) {
       console.error(error);
