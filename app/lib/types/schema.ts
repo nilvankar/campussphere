@@ -179,6 +179,9 @@ export interface dormVisitorsType extends Document {
 }
 export interface outPassType extends Document{
  Status:string
+ name:string;
+ phonNo:number;
+ roomNO:number
 }
 export interface wardenType extends Document {
   wardenName: string;

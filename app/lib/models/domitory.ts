@@ -31,7 +31,6 @@ export const roomMgmtModel =
   mongoose.models.roomMgmtModel ||
   mongoose.model<roomMgmtType>("roomMgmtModel", roomMgmtSchema);
 
-
 const wardenMgmt: Schema<wardenType> = new mongoose.Schema({
   wardenName: { type: String, required: true },
 });
@@ -65,6 +64,9 @@ export const dormVisitors =
 
 const outPassSchema: Schema<outPassType> = new mongoose.Schema({
   Status: { type: String, required: true },
+  name: { type: String, required: true },
+  phonNo: { type: Number, required: true },
+  roomNO: { type: Number, required: true },
 });
 export const outPassMgmt =
   mongoose.models.outPassMgmt || mongoose.model("outPassMgmt", outPassSchema);

@@ -6,15 +6,15 @@ const Domitory = () => {
   const [dormBuilding, setdormBuilding] = useState(true);
   const [dormbuildingForm, setDormbuildingForm] = useState(false);
   const [roomMgmt, setRoomMgmt] = useState(false);
-  const [roomForm, setRoomForm] = useState(false)
+  const [roomForm, setRoomForm] = useState(false);
   const [warden, setWarden] = useState(false);
-  const [wardenForm, setWardenForm] = useState(false)
+  const [wardenForm, setWardenForm] = useState(false);
   const [dormTimetable, setDormTimetable] = useState(false);
-  const [dormTimetableForm, setDormTimetableForm] = useState(false)
+  const [dormTimetableForm, setDormTimetableForm] = useState(false);
   const [dormVisitors, setDormVisitors] = useState(false);
-  const [dormvisitorsForm, setDormvisitorsForm] = useState(false)
+  const [dormvisitorsForm, setDormvisitorsForm] = useState(false);
   const [outPassMgmt, setOutPassMgmt] = useState(false);
-  const [outPassMgmtform, setOutPassMgmtform] = useState(false)
+  const [outPassMgmtform, setOutPassMgmtform] = useState(false);
   return (
     <div>
       <div className="inline-flex">
@@ -97,50 +97,62 @@ const Domitory = () => {
           Outpass Management
         </button>
       </div>
-    
+
       {/* dorm building screen */}
       <div className={dormBuilding ? "visible" : "hidden"}>
-      <div className="flex justify-around w-96 border-2 mt-12">
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="buildingName"
-          >
-            Building Name
-          </label>
-          <select name="buildingName" id="buildingName">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
+        <div className="flex justify-around w-96 border-2 mt-12">
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="buildingName"
+            >
+              Building Name
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="buildingName"
+              id="buildingName"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="domType"
+            >
+              Domitory Type
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="domType"
+              id="domType"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="floorNo"
+            >
+              Floor No
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="floorNo"
+              id="floorNo"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="domType"
-          >
-            Domitory Type
-          </label>
-          <select name="domType" id="domType">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="floorNo"
-          >
-            Floor No
-          </label>
-          <select name="floorNo" id="floorNo">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-      </div>
         <span>
           Dorm Building
           <PlusCircleFilled
@@ -161,7 +173,11 @@ const Domitory = () => {
             <tr className="border-2">
               <td className="border-2">b1</td>
               <td className="border-2">
-                <select name="" id="">
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  name=""
+                  id=""
+                >
                   <option value="" hidden>
                     Select
                   </option>
@@ -178,9 +194,10 @@ const Domitory = () => {
 
         <form
           action=""
-          className={`fixed z-10 inset-0 overflow-y-auto bg-blue-600 mt-56 grid grid-cols-2 h-96 gap-8 mx-40 ${
-            dormbuildingForm ? "block" : "hidden"
-          }`}
+          className={
+            dormbuildingForm ? "visible border-2 rounded-lg ml-40 w-96" : "hidden"
+          }
+          style={{ marginLeft: "60rem" }}
         >
           <div>
             <label
@@ -258,54 +275,74 @@ const Domitory = () => {
               id="maxCapacity"
             />
           </div>
+          <div>
+            <input
+              type="submit"
+              value="SEND"
+              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+            />
+          </div>
         </form>
       </div>
 
       {/* room management */}
       <div className={roomMgmt ? "visible" : "hidden"}>
-      <div className="flex justify-around w-96 border-2 mt-12">
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="buildingName"
-          >
-            Building Name
-          </label>
-          <select name="buildingName" id="buildingName">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
+        <div className="flex justify-around w-96 border-2 mt-12">
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="buildingName"
+            >
+              Building Name
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="buildingName"
+              id="buildingName"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="domType"
+            >
+              Domitory Type
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="domType"
+              id="domType"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="floorNo"
+            >
+              Floor No
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="floorNo"
+              id="floorNo"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="domType"
-          >
-            Domitory Type
-          </label>
-          <select name="domType" id="domType">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="floorNo"
-          >
-            Floor No
-          </label>
-          <select name="floorNo" id="floorNo">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-      </div>
         <span>
-          Room Management <PlusCircleFilled onClick={() => setRoomForm(!roomForm)} />
+          Room Management{" "}
+          <PlusCircleFilled onClick={() => setRoomForm(!roomForm)} />
         </span>
         <table className="table border-2">
           <thead>
@@ -322,253 +359,587 @@ const Domitory = () => {
           <tbody>
             <tr>
               <td className="border-2">b1</td>
-              <td className="border-2"><select
+              <td className="border-2">
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  name="domType"
+                  id="domType"
+                >
+                  <option value="" hidden></option>
+                  <option value="boys">Boys</option>
+                  <option value="girls">Girls</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <form
+          action=""
+          method="POST"
+          className={
+            roomForm ? "visible border-2 rounded-lg ml-40 w-96" : "hidden"
+          }
+          style={{ marginLeft: "60rem" }}
+        >
+          <div>
+            <label htmlFor="floorNo">Floor No</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="number"
+              name="floorNo"
+              id="floorNo"
+            />
+          </div>
+          <div>
+            <label htmlFor="roomType">Room Type</label>
+          </div>
+          <div>
+            <label htmlFor="roomNo">Room No</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="number"
+              name=""
+              id=""
+            />
+          </div>
+          <div>
+            <label htmlFor="totalBeds">Total Beds</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="number"
+              name=""
+              id=""
+            />
+          </div>
+          <div>
+            <label htmlFor="availablebeds">Available Beds</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="number"
+              name="availablebeds"
+              id="availablebeds"
+            />
+          </div>
+          <div>
+            <input
+              type="submit"
+              value="SEND"
+              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+            />
+          </div>
+        </form>
+      </div>
+      <div className={warden ? "visible" : "hidden"}>
+        <div className="flex justify-around w-96 border-2 mt-12">
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="buildingName"
+            >
+              Building Name
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="buildingName"
+              id="buildingName"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="domType"
+            >
+              Domitory Type
+            </label>
+            <select
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="domType"
               id="domType"
             >
-              <option value="" hidden></option>
-              <option value="boys">Boys</option>
-              <option value="girls">Girls</option>
-            </select></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className={warden ? "visible" : "hidden"}>
-      <div className="flex justify-around w-96 border-2 mt-12">
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="buildingName"
-          >
-            Building Name
-          </label>
-          <select name="buildingName" id="buildingName">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="floorNo"
+            >
+              Floor No
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="floorNo"
+              id="floorNo"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="domType"
-          >
-            Domitory Type
-          </label>
-          <select name="domType" id="domType">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="floorNo"
-          >
-            Floor No
-          </label>
-          <select name="floorNo" id="floorNo">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-      </div>
-      <table className="table border-2">
+        <span>
+          Add Warden
+          <PlusCircleFilled onClick={() => setWardenForm(!wardenForm)} />
+        </span>
+        <table className="table border-2">
           <thead>
             <tr>
               <th className="border-2">Bulding Name</th>
               <th className="border-2">Dom Type</th>
               <th className="border-2">Floor No</th>
-             <th className="border-2">Warden Name</th>
+              <th className="border-2">Warden Name</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className="border-2">b1</td>
-              <td className="border-2"><select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="domType"
-              id="domType"
-            >
-              <option value="" hidden></option>
-              <option value="boys">Boys</option>
-              <option value="girls">Girls</option>
-            </select></td>
-            <td>1</td>
-            <td>Nee</td>
+              <td className="border-2">
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  name="domType"
+                  id="domType"
+                >
+                  <option value="" hidden></option>
+                  <option value="boys">Boys</option>
+                  <option value="girls">Girls</option>
+                </select>
+              </td>
+              <td className="border-2">1</td>
+              <td className="border-2">Nee</td>
             </tr>
           </tbody>
         </table>
+        <form
+          action=""
+          method="POST"
+          className={
+            wardenForm ? "visible border-2 rounded-lg ml-40 w-96" : "hidden"
+          }
+          style={{ marginLeft: "60rem" }}
+        >
+          <div>
+            <label htmlFor="wardenName">Warden Name</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="wardenName"
+              id="wardenName"
+            />
+          </div>
+          <div>
+            <input
+              type="submit"
+              value="SEND"
+              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+            />
+          </div>
+        </form>
       </div>
       <div className={dormTimetable ? "visible" : "hidden"}>
-      <div className="flex justify-around w-96 border-2 mt-12">
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="buildingName"
-          >
-            Building Name
-          </label>
-          <select name="buildingName" id="buildingName">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
+        <div className="flex justify-around w-96 border-2 mt-12">
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="buildingName"
+            >
+              Building Name
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="buildingName"
+              id="buildingName"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
         </div>
-        
-      </div>
-        <span>Add Dorm Timetable <PlusCircleFilled onClick={()=>setDormTimetableForm(!dormTimetableForm)} /></span>
+        <span>
+          Add Dorm Timetable{" "}
+          <PlusCircleFilled
+            onClick={() => setDormTimetableForm(!dormTimetableForm)}
+          />
+        </span>
         <table className="border-2 table">
           <thead>
             <tr>
-              <th>Building Name</th>
-              <th>Dorm Type</th>
-              <th>Dormitory Activity</th>
-              <th>Start Time</th>
-              <th>End Time</th>
-
+              <th className="border-2">Building Name</th>
+              <th className="border-2">Dorm Type</th>
+              <th className="border-2">Dormitory Activity</th>
+              <th className="border-2">Start Time</th>
+              <th className="border-2">End Time</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>b1</td>
-              <td>
-              <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="domType"
-              id="domType"
-            >
-              <option value="" hidden></option>
-              <option value="boys">Boys</option>
-              <option value="girls">Girls</option>
-            </select>
+              <td className="border-2">b1</td>
+              <td className="border-2">
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  name="domType"
+                  id="domType"
+                >
+                  <option value="" hidden></option>
+                  <option value="boys">Boys</option>
+                  <option value="girls">Girls</option>
+                </select>
               </td>
-              <td>Lunch</td>
-              <td>12:30</td>
-              <td>13:01</td>
+              <td className="border-2">Lunch</td>
+              <td className="border-2">12:30</td>
+              <td className="border-2">13:01</td>
             </tr>
           </tbody>
         </table>
+        <form
+          action=""
+          method="POST"
+          className={
+            dormTimetableForm
+              ? "visible border-2 rounded-lg ml-40 w-96"
+              : "hidden"
+          }
+          style={{ marginLeft: "60rem" }}
+        >
+          <div>
+            <label htmlFor="dormActivity">Dormitory Activity</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="dormActivity"
+              id="dormActivity"
+            />
+          </div>
+          <div>
+            <label htmlFor="startTime">Start Time</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="time"
+              name="startTime"
+              id="startTime"
+            />
+          </div>
+          <div>
+            <label htmlFor="endTime">End Time</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="time"
+              name="endTime"
+              id="endTime"
+            />
+          </div>
+          <div>
+            <input
+              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+              type="submit"
+              value="SEND"
+            />
+          </div>
+        </form>
       </div>
       <div className={dormVisitors ? "visible" : "hidden"}>
-      <div className="flex justify-around w-96 border-2 mt-12">
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="buildingName"
-          >
-            Building Name
-          </label>
-          <select name="buildingName" id="buildingName">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
+        <div className="flex justify-around w-96 border-2 mt-12">
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="buildingName"
+            >
+              Building Name
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="buildingName"
+              id="buildingName"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="fromTime">From</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="date"
+              name="fromTime"
+              id="fromTime"
+            />
+          </div>
+          <div>
+            <label htmlFor="toTime">To</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="date"
+              name="datetime"
+              id="datetime"
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="fromTime">From</label>
-          <input type="date" name="fromTime" id="fromTime" />
-        </div>
-        <div>
-          <label htmlFor="toTime">To</label>
-          <input type="date" name="datetime" id="datetime" />
-        </div>
-      </div>
+        <span>
+          Add Dorm Visitors
+          <PlusCircleFilled
+            onClick={() => setDormvisitorsForm(!dormvisitorsForm)}
+          />
+        </span>
         <table className="table border-2">
           <thead>
             <tr>
-              <th>Date of Visit</th>
-              <th>Whome TO Meet?</th>
-              <th>Visitor Name</th>
-              <th>Relation</th>
-              <th>Purpose</th>
-              <th>Mobile Number</th>
-              <th>Check IN Time</th>
-              <th>Check Out Time</th>
+              <th className="border-2">Date of Visit</th>
+              <th className="border-2">Whome TO Meet?</th>
+              <th className="border-2">Visitor Name</th>
+              <th className="border-2">Relation</th>
+              <th className="border-2">Purpose</th>
+              <th className="border-2">Mobile Number</th>
+              <th className="border-2">Check IN Time</th>
+              <th className="border-2">Check Out Time</th>
             </tr>
           </thead>
         </table>
-         </div>
-      <div className={outPassMgmt ? "visible" : "hidden"}>
-      <div className="flex justify-around w-96 border-2 mt-12">
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="buildingName"
-          >
-            Building Name
-          </label>
-          <select name="buildingName" id="buildingName">
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="degreeCode"
-          >
-            DegreeCode
-          </label>
-          <select
-            className=""
-            name="degreeCode"
-            id="degreeCode"
-          >
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="courseYear"
-          >
-            CourseYear
-          </label>
-          <select
-            className=""
-            name="courseYear"
-            id="courseYear"
-          >
-            <option value="" hidden>
-              Select
-            </option>
-          </select>
-        </div>
-       <div><label htmlFor="room" className="block text-gray-700 text-sm font-bold mb-2">Room</label><select name="room" id="room"><option value="" hidden></option></select></div>
+        <form
+          action=""
+          method="POST"
+          className={
+            dormvisitorsForm
+              ? "visible border-2 rounded-lg ml-40 w-96"
+              : "hidden"
+          }
+          style={{ marginLeft: "60rem" }}
+        >
+          <div>
+            <label htmlFor="dateOfVisit">Date of Visit</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="date"
+              name="dateOfVisit"
+              id="dateOfVisit"
+            />
+          </div>
+          <div>
+            <label htmlFor="whom">Whom TO Meet</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="whom"
+              id="whom"
+            />
+          </div>
+          <div>
+            <label htmlFor="visitorName">Visitor Name</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="visitorName"
+              id="visitorName"
+            />
+          </div>
+          <div>
+            <label htmlFor="relation">Relation</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="relation"
+              id="relation"
+            />
+          </div>
+          <div>
+            <label htmlFor="mobileNo">Mobile No</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="tel"
+              name="mobileNo"
+              id="mobileNo"
+            />
+          </div>
+          <div>
+            <label htmlFor="checkin">Check In</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="time"
+              name="checkin"
+              id="checkin"
+            />
+          </div>
+          <div>
+            <label htmlFor="checkOut">Check Out</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="time"
+              name="checkOut"
+              id="checkOut"
+            />
+          </div>
+          <div>
+            <input
+              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+              type="submit"
+              value="Add Dorm Visitor"
+            />
+          </div>
+        </form>
       </div>
-
-      <table className="table border-2">
+      <div className={outPassMgmt ? "visible" : "hidden"}>
+        <div className="flex justify-around w-96 border-2 mt-12">
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="buildingName"
+            >
+              Building Name
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="buildingName"
+              id="buildingName"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="degreeCode"
+            >
+              DegreeCode
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="degreeCode"
+              id="degreeCode"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="courseYear"
+            >
+              CourseYear
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="courseYear"
+              id="courseYear"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="room"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Room
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="room"
+              id="room"
+            >
+              <option value="" hidden></option>
+            </select>
+          </div>
+        </div>
+        <span>
+          OutPass Management{" "}
+          <PlusCircleFilled
+            onClick={() => setOutPassMgmtform(!outPassMgmtform)}
+          />
+        </span>
+        <table className="table border-2">
           <thead>
             <tr>
-              <th>Degree Code</th>
-              <th>Course Year</th>
-              <th>Admission Number</th>
-              <th>Name</th>
-              <th>Phone No</th>
-              <th>Room Number</th>
-              <th>Status</th>
+              <th className="border-2">Degree Code</th>
+              <th className="border-2">Course Year</th>
+              <th className="border-2">Admission Number</th>
+              <th className="border-2">Name</th>
+              <th className="border-2">Phone No</th>
+              <th className="border-2">Room Number</th>
+              <th className="border-2">Status</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className="border-2"></td>
+              <td className="border-2"></td>
+              <td className="border-2"></td>
+              <td className="border-2"></td>
+              <td className="border-2"></td>
+              <td className="border-2"></td>
+              <td className="border-2"></td>
             </tr>
           </tbody>
-      </table>
+        </table>
+        <form
+          action=""
+          method="POST"
+          className={
+            outPassMgmtform
+              ? "visible border-2 rounded-lg ml-40 w-96"
+              : "hidden"
+          }
+          style={{ marginLeft: "60rem" }}
+        >
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="name"
+              id="name"
+            />
+          </div>
+          <div>
+            <label htmlFor="phoneNo">Phone No</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="tel"
+              name="phoneNo"
+              id="phoneNo"
+            />
+          </div>
+          <div>
+            <label htmlFor="roomNo">Room No</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="number"
+              name="roomNo"
+              id="roomNo"
+            />
+          </div>
+          <div>
+            <label htmlFor="status">Status</label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="status"
+              id="status"
+            >
+              <option value="" hidden>
+                Select
+              </option>
+            </select>
+          </div>
+          <div>
+            <input
+              type="submit"
+              value="SEND"
+              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+            />
+          </div>
+        </form>
       </div>
     </div>
   );
