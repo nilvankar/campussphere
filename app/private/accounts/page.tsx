@@ -20,10 +20,7 @@ const AccountsPage = () => {
       </div>
       <div className="brightness-90 hover:brightness-100 mt-32 mx-10 bg-orange-500">
 
-      <Link className="decoration-transparent text-white" href="/private/accounts/misc_transactions">
-        <Image src="/images/fees.jpeg" alt="Misc Transactions" height={200} width={200} />
-        Misc Transactions
-      </Link>
+    
       </div>
     </div>
   );

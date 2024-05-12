@@ -1,0 +1,125 @@
+// This is your Prisma schema file
+// learn more about it in the docs  https //pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate  https //pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// helper enums
+enum Role {
+  STUDENT_OR_PARENT
+  STAFF_OR_FACULTY
+  PRINCIPAL
+  DIRECTOR
+  OTHER
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum MaritalStatus {
+  MARRIED
+  UNMARRIED
+}
+
+enum Identification {
+  HE_HIM
+  SHE_HER
+  OTHER
+}
+
+// models
+model User {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  email         String @unique
+  phoneNo       Int    @unique
+  fullName      String
+  role          Role
+  instituteName String @unique
+}
+
+model Institute {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  email          String @unique
+  alternateEmail String @unique
+  instituteName  String
+  founderName    String
+  affiliation    String
+  shortcode      Int
+  contactno      Int
+  address        String
+  officeno       Int
+  panNo          Int
+}
+
+model Admin {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  firstName      String
+  lastName       String
+  middleName     String
+  dob            DateTime
+  gender         Gender
+  maritalStatus  MaritalStatus
+  email          String
+  alternateEmail String
+  landLineNumber Int
+  adharNo        Int
+  panNo          Int
+  joiningData    DateTime
+  salary         Int
+  address        String
+  profilePhoto   String
+  contactNo      Int
+  jobDesignation String
+}
+
+model Student {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  email          String         @unique
+  alternateEmail String         @unique
+  firstName      String
+  lastName       String
+  middleName     String
+  dob            DateTime
+  gender         Gender
+  maritalStatus  MaritalStatus
+  adharNo        Int
+  identification Identification
+  contactNo      Int
+  parentNo       Int
+  religion       String
+  firstLang      String
+  secondLang     String
+  cast           String
+  bloodGroup     String
+  ethinicity     String
+  nationality    String
+  address        String
+  isOrphan       Boolean
+  isDisable      Boolean
+}
+
+model Branch {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  branchLogo          String
+  branchName          String
+  registrationNumber  Int
+  alias               String
+  email               String
+  alteranteEmail      String
+  contactNo           Int
+  officeNo            Int
+  address             String
+  yearOfEstablishment DateTime
+}

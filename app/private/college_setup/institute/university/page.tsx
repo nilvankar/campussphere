@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-
+import Image from "next/image";
 const UniversityInformation = () => {
   const router = useRouter();
   const intialState = {
@@ -57,17 +57,30 @@ const UniversityInformation = () => {
     const getUniveristy = async () => {
       const response = await fetch("/api/college_setup/institute/university");
       const resData = await response.json();
-      console.log(resData);
+      setInstitute(resData);
+      const {
+        affiliation,
+        alternateEmail,
+        contactno,
+        email,
+        founderName,
+        instituteName,
+        logo,
+        officeno,
+        panNo,
+        shortcode,
+        address,
+      } = resData;
     };
     getUniveristy();
-  }, [institute]);
+  }, []);
   return (
     <div className="h-screen w-screen overscroll-y-none ">
       <form
         method="PUT"
         onSubmit={handleSubmit}
         className="grid grid-cols-3 mt-10 ml-20 "
-        style={{ gridTemplateColumns: "",width:"61rem",height:"37rem" }}
+        style={{ gridTemplateColumns: "", width: "61rem", height: "37rem" }}
       >
         <div className="border-2">
           <div className="justify-center">
@@ -80,8 +93,14 @@ const UniversityInformation = () => {
               type="file"
               name="logo"
               value={logo}
-              
               id="logo"
+            />
+            <Image
+              src={"/images/setup_academics.jpeg"}
+              alt="UNIVERSITY LOGO"
+              height={200}
+              width={200}
+              className="border-2 mx-8 my-12 rounded-full"
             />
           </div>
         </div>
@@ -220,23 +239,22 @@ const UniversityInformation = () => {
           </div>
         </div>
         <div className="inline-flex justify-around mt-28">
-
-        <div className="">
-          <input
-            className="rounded-lg mx-24 w-32 border-2 block bg-sky-400 hover:text-black hover:bg-white text-white"
-            type="submit"
-            value="EDIT"
+          <div className="">
+            <input
+              className="rounded-lg mx-24 w-32 border-2 block bg-sky-400 hover:text-black hover:bg-white text-white"
+              type="submit"
+              value="EDIT"
             />
-        </div>
-        <div>
-          <button
-            onClick={() => setInstitute(intialState)}
-            className="rounded-lg mx-24 w-32 border-2 bg-red-600 hover:text-black hover:bg-white text-white block"
+          </div>
+          <div>
+            <button
+              onClick={() => setInstitute(intialState)}
+              className="rounded-lg mx-24 w-32 border-2 bg-red-600 hover:text-black hover:bg-white text-white block"
             >
-            RESET
-          </button>
+              RESET
+            </button>
+          </div>
         </div>
-            </div>
       </form>
     </div>
   );

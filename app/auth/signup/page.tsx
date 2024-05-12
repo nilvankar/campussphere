@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const SignUpPage = () => {
-  const [instituteName, setInstituteName] = useState([])
   const userSchema = z.object({
     email: z.string().email(),
     password: z.string().min(6).max(8),
@@ -22,7 +21,7 @@ const SignUpPage = () => {
   const initialState = {
     email: "",
     fullName: "",
-    instituteName: "",
+    
     password: "",
     role: "",
   };
@@ -61,12 +60,7 @@ const SignUpPage = () => {
       console.error(error);
     }
   };
-
-  const [data] = useFetch(
-    "/api/college_setup/institute/university",
-    instituteName
-  );
-  console.log(data);
+  const { email, fullName, password, role } = user;
 
   return (
     <div className="h-screen w-screen flex justify-center bg-gradient-to-r from-violet-500/95 to-purple-600  items-center">
@@ -89,15 +83,18 @@ const SignUpPage = () => {
           onSubmit={handleSubmit(onsubmit)}
         >
           <div>
-            <label className="block text-sm mx-28 font-medium text-gray-700"
+            <label
+              className="block text-sm mx-28 font-medium text-gray-700"
               htmlFor="fullName"
-                >
+            >
               Name
             </label>
             <input
               required
               {...register("fullName")}
               type="text"
+              onChange={onchange}
+              value={fullName}
               id="fullName"
               name="fullName"
               className="input-field rounded-lg border-2 w-80 mx-28"
@@ -106,9 +103,9 @@ const SignUpPage = () => {
           </div>
 
           <div>
-            <label className="block text-sm mx-28 font-medium text-gray-700"
+            <label
+              className="block text-sm mx-28 font-medium text-gray-700"
               htmlFor="email"
-             
             >
               Email Address
             </label>
@@ -117,39 +114,56 @@ const SignUpPage = () => {
               {...register("email")}
               type="email"
               id="email"
+              onChange={onchange}
+              value={email}
               name="email"
               className="input-field rounded-lg border-2 w-80 mx-28"
             />
             {errors.email && <p>{errors.email.message}</p>}
           </div>
           <div>
-          <div><label className="block text-sm mx-28 font-medium text-gray-700" htmlFor="password">Password</label>
-          <input className="input-field rounded-lg border-2 w-80 mx-28" type="password" name="password" id="password" />
-          
+            <div>
+              <label
+                className="block text-sm mx-28 font-medium text-gray-700"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                className="input-field rounded-lg border-2 w-80 mx-28"
+                type="password"
+                name="password"
+                value={password}
+                onChange={onchange}
+                id="password"
+              />
+            </div>
+         
           </div>
-            <label className="block text-sm mx-28 font-medium text-gray-700" htmlFor="instituteName">Institute Name</label>
-            <select name="instituteName" className="input-field rounded-lg border-2 w-80 mx-28" id="instituteName">
-              Institute Name
+          <div>
+            <label
+              className="block text-sm mx-28 font-medium text-gray-700"
+              htmlFor="role"
+            >
+              Your Role
+            </label>
+            <select
+              onChange={onchange}
+              value={role}
+              className="input-field rounded-lg border-2 w-80 mx-28"
+              name="role"
+              id="role"
+            >
               <option value="" hidden>
                 Select
               </option>
-              {data.map((val: string, i: number) => (
-                <option value={val} key={i} >
-                  {val}
-                </option>
-              ))}
+              <option value="director">Director</option>
+              <option value="principal">Principal</option>
+              <option value="staffFaculty">Staff or Faculty</option>
+              <option value="studentParent">Student or Parent</option>
+              <option value="other">Other</option>
             </select>
           </div>
-        <div>
-          <label className="block text-sm mx-28 font-medium text-gray-700" htmlFor="role">Your Role</label>
-          <select className="input-field rounded-lg border-2 w-80 mx-28" name="role" id="role"><option value="" hidden>Select</option>
-          <option value="director">Director</option>
-          <option value="principal">Principal</option>
-          <option value="staffFaculty">Staff or Faculty</option>
-          <option value="studentParent">Student or Parent</option>
-          <option value="other">Other</option>
-          </select>
-        </div>
           {/* Similarly, add validation errors for other fields */}
 
           <button

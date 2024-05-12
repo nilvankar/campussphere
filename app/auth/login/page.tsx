@@ -21,7 +21,10 @@ const LoginPage = () => {
       const resData = await res.json();
       if (res.ok) {
         console.log("successfully login", resData);
-        
+        const token = await resData.token;
+        localStorage.setItem(token, "token");
+        console.log(localStorage.getItem(token));
+
         router.push("/");
       }
     } catch (error) {

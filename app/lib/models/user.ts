@@ -1,14 +1,14 @@
 import mongoose, { Document, Schema } from "mongoose";
 export interface userType extends Document {
   fullName: string;
-  instituteName: string;
+  // instituteName: string;
   email: string;
   role: string;
   password: string;
 }
 const userSchema: Schema<userType> = new mongoose.Schema({
   fullName: { type: String, required: true },
-  instituteName: { type: String, required: true },
+  // instituteName: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
   role: {

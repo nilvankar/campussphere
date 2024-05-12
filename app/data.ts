@@ -334,20 +334,7 @@ export const userStatistics = [
   { label: "Total Count" },
 ];
 
-export const months = [
-  { label: "JAN" },
-  { label: "FEB" },
-  { label: "MAR" },
-  { label: "APR" },
-  { label: "MAY" },
-  { label: "JUN" },
-  { label: "JUL" },
-  { label: "AUG" },
-  { label: "SEP" },
-  { label: "OCT" },
-  { label: "NOV" },
-  { label: "DEC" },
-];
+
 export const weekDays = [
   { label: "Monday" },
   { label: "TuesDay" },
@@ -447,11 +434,3 @@ export const userMgmtModules = [
     alt: "Authorization",
   },
 ];
-export const getYears = () => {
-  const list = [];
-  const currYear = new Date().getFullYear();
-  for (let i = 2000; i <= currYear; i++) {
-    list.push(i);
-  }
-  return list;
-};

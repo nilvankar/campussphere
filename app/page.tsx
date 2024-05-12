@@ -7,6 +7,7 @@ const Page = async () => {
   
   return (
     <Suspense fallback={<div>...Loading</div>}>
+      
       <Private />
     </Suspense>
   );
